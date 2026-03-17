@@ -141,9 +141,9 @@ Insumo               1 ──── N  MovimientoInventario
  
 | Sprint | Período | HUs | Alcance |
 | :--- | :--- | :--- | :--- |
-| **Sprint 1** | 16 Mar → 29 Mar | HU-01, HU-02, HU-03 | Docker, Prisma, Categorías, Insumos, Proveedores |
-| **Sprint 2** | 30 Mar → 10 Abr | HU-04, HU-05 | Órdenes de Compra, Recepción de mercancia |
-| **Sprint 3** | 13 Abr → 17 Abr | HU-06, HU-07, HU-12 | Recetas, costos y layout base |
+| [Sprint 1] (#sprint-1-- Gestión-de-Catálogos-e-Insumos) | 16 Mar → 29 Mar | HU-01, HU-02, HU-03 | Docker, Prisma, Categorías, Insumos, Proveedores |
+| [Sprint 2] | 30 Mar → 10 Abr | HU-04, HU-05 | Órdenes de Compra, Recepción de mercancia |
+| [Sprint 3] | 13 Abr → 17 Abr | HU-06, HU-07, HU-12 | Recetas, costos y layout base |
 
 
  ### Release 2 — Tercer Corte: Integración + Reportes
@@ -153,8 +153,8 @@ Insumo               1 ──── N  MovimientoInventario
 
 | Sprint | Período | HUs | Alcance |
 | :--- | :--- | :--- | :--- |
-| **Sprint 4** | 20 Abr → 08 May | HU-08, HU-09, HU-10, HU-13 | Alertas, movimientos, mermas y dashboard |
-| **Sprint 5** | 11 May → 22 May | HU-11, HU-14 | Reportes, autenticación, roles y cierre |
+| [Sprint 4] | 20 Abr → 08 May | HU-08, HU-09, HU-10, HU-13 | Alertas, movimientos, mermas y dashboard |
+| [Sprint 5] | 11 May → 22 May | HU-11, HU-14 | Reportes, autenticación, roles y cierre |
 ---
 ## 📌 Sprints e Historias de Usuario
 
