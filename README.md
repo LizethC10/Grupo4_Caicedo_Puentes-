@@ -1,311 +1,126 @@
-🍽️ Sistema de Inventario para Restaurante
+# 🍽️ Sistema de Inventario para Restaurante
 
-Proyecto Full-Stack — Programación Web 2026A
+**Proyecto full-stack guiado por el docente — Programación Web 2026A**
+**Equipo de Desarrollo:** Lizeth Lorena Caicedo Mora, Lilly Signey Puentes Rincón
 
-NestJS · Next.js · PostgreSQL · Prisma · Docker
+📋 **Tabla de Contenidos**
+1. [Descripción del Proyecto](#-descripción-del-proyecto)
+2. [Stack Tecnológico](#-stack-tecnológico)
+3. [Arquitectura](#-arquitectura)
+4. [Modelo de Datos](#-modelo-de-datos)
+5. [Plan de Lanzamientos](#-plan-de-lanzamientos)
+6. [Sprints e Historias de Usuario](#-sprints-e-historias-de-usuario)
+7. [Cronograma](#-cronograma)
+8. [Definición de Hecho (DoD)](#-definición-de-hecho-dod)
+9. [Tablero Kanban](#-tablero-kanban)
+10. [Instalación y Ejecución](#-instalación-y-ejecución)
 
-📋 Tabla de Contenidos
+---
 
-Descripción del Proyecto
+## 📖 Descripción del Proyecto
 
-Contexto
+El **Sistema de Inventario para Restaurante** es una aplicación web full-stack diseñada para controlar el inventario de insumos, gestionar pedidos a proveedores y llevar un registro detallado de las recetas del menú. Su objetivo principal es optimizar el tiempo del personal (chef y administrador) automatizando las alertas de reabastecimiento y el cálculo de costos operativos.
 
-Alcance
+### Alcance
 
-Funcionalidades
+| Aspecto | Detalle |
+| :--- | :--- |
+| **Tipo** | Intermedio — Control de insumos y pedidos |
+| **Entidades** | 8 entidades con relaciones (ver modelo de datos) |
+| **Historias de Usuario** | 12 HUs organizadas en 5 sprints |
+| **Entregas** | 2 lanzamientos alineados con los cortes académicos |
+| **Casos de Uso** | 10 CUs (CRUD, compras, stock, recetas, reportes) |
 
-Stack Tecnológico
+### Funcionalidades Principales
 
-Arquitectura
+* ✅ **CRUD completo** de Categorías, Insumos y Proveedores.
+* ✅ **Gestión de Órdenes de Compra** y recepción automática de mercancía.
+* ✅ **Control de Stock Mínimo** con sistema de alertas para reabastecimiento.
+* ✅ **Gestión de Recetas**, asociando ingredientes y cantidades exactas.
+* ✅ **Cálculo automático de costos** de recetas basado en los precios actuales de los insumos.
+* ✅ **Historial de Movimientos** de inventario (entradas y salidas).
+* ✅ **Reportes** de insumos más consumidos y gastos por proveedor.
 
-Estructura del Proyecto
+---
 
-Modelo de Datos
+## 🛠 Stack Tecnológico
 
-Casos de Uso
+| Capa | Tecnología | Propósito |
+| :--- | :--- | :--- |
+| **Backend** | NestJS (Node.js + TypeScript) | API REST con arquitectura en capas |
+| **Frontend** | Next.js 14+ (React + TypeScript) | Interfaz de usuario con App Router |
+| **Base de Datos** | PostgreSQL 16 | Almacenamiento relacional |
+| **ORM** | Prisma | Modelado de datos, migraciones y consultas |
+| **Infraestructura** | Docker + Docker Compose | Orquestación de servicios |
+| **Validación** | class-validator + class-transformer | DTOs y validación de entrada |
 
-Plan de Desarrollo (Sprints)
+---
 
-Definición de Hecho (DoD)
+## 🏗 Arquitectura
 
-Instalación y Ejecución
+El proyecto sigue una **arquitectura en capas** con separación de responsabilidades:
+`Cliente HTTP → Controller (valida DTO + ruta) → Service (lógica de negocio) → Repository (acceso a datos) → Prisma / PostgreSQL`
 
-Autores
+### Estructura del Proyecto
 
-📖 Descripción del Proyecto
-
-El Sistema de Inventario para Restaurante es una aplicación web full-stack que permite gestionar de manera eficiente los insumos, proveedores, órdenes de compra y recetas de un restaurante.
-
-El sistema automatiza procesos clave como el control de stock, cálculo de costos y generación de reportes, optimizando la operación diaria del negocio.
-
-🎯 Contexto
-
-Un restaurante en crecimiento presenta dificultades como:
-
-Falta de control de inventario
-
-Desconocimiento de insumos agotados
-
-Procesos manuales de compra
-
-Dificultad para calcular costos de recetas
-
-Este sistema surge como solución para mejorar la gestión operativa y la toma de decisiones.
-
-📌 Alcance
-Aspecto	Detalle
-Tipo	Proyecto académico guiado
-Enfoque	Inventario + Compras + Recetas
-Entidades	8 entidades principales
-Casos de uso	10 funcionalidades
-Arquitectura	Modular en capas
-⚙️ Funcionalidades Principales
-
-✅ CRUD de Insumos, Categorías y Proveedores
-✅ Gestión de órdenes de compra
-✅ Actualización automática de inventario
-✅ Registro de recetas con ingredientes
-✅ Cálculo de costo de recetas
-✅ Alertas de stock mínimo
-✅ Historial de movimientos de inventario
-✅ Reportes de consumo y gastos
-
-🛠 Stack Tecnológico
-Capa	Tecnología	Uso
-Backend	NestJS	API REST
-Frontend	Next.js	Interfaz
-Base de Datos	PostgreSQL	Persistencia
-ORM	Prisma	Modelado
-Contenedores	Docker	Ejecución
-Lenguaje	TypeScript	Desarrollo
-🏗 Arquitectura
-
-El sistema implementa una arquitectura modular en capas, basada en separación de responsabilidades:
-
-Cliente → Controller → Service → Repository → Prisma → PostgreSQL
-
-🔹 Capas
-
-Controller: Manejo de solicitudes HTTP
-
-Service: Lógica de negocio
-
-Repository: Acceso a datos
-
-Prisma: ORM para consultas
-
-Base de Datos: PostgreSQL
-
-📂 Estructura del Proyecto
+```text
 proyecto/
 ├── docker-compose.yml
 ├── .env.example
-
-├── backend/
+├── backend/                        # API REST con NestJS
 │   ├── src/
-│   │   ├── common/                 # Filtros, pipes, interceptores
-│   │   ├── config/                 # Configuración global
-│   │   ├── prisma/                 # Conexión a BD
-│   │   ├── shared/                 # Utilidades
-│   │   └── modules/
-│   │       ├── insumo/
-│   │       ├── proveedor/
-│   │       ├── orden-compra/
-│   │       ├── receta/
-│   │       ├── categoria/
-│   │       └── movimiento-inventario/
+│   │   ├── common/                 # Módulo compartido (filtros, interceptores, pipes)
+│   │   ├── prisma/                 # Módulo Prisma
+│   │   └── modules/                # Módulos de dominio (Insumos, Ordenes, Recetas...)
+│   │       └── [entidad]/
+│   │           ├── controller/     # Manejo HTTP
+│   │           ├── service/        # Lógica de negocio
+│   │           ├── repository/     # Acceso a datos
+│   │           └── dto/            # Validación
 │   └── prisma/
-│       └── schema.prisma
-
-├── frontend/
+│       └── schema.prisma           # Esquema de base de datos
+│
+├── frontend/                       # Interfaz con Next.js
 │   ├── src/
-│   │   ├── app/                    # Rutas
-│   │   ├── components/             # UI global
-│   │   ├── modules/                # Lógica por dominio
-│   │   ├── services/               # API
-│   │   ├── hooks/
-│   │   └── interfaces/
+│   │   ├── app/                    # App Router (páginas)
+│   │   ├── components/             # Componentes reutilizables
+│   │   └── services/               # Consumo de la API REST
 │   └── package.json
-
 └── README.md
-🧩 Modelo de Datos
-🔗 Relaciones
+```
 
-Insumo → pertenece a → Categoría
+📊 Modelo de Datos
+Diagrama de Relaciones
 
-Proveedor → suministra → Insumos
+Categoria            1 ──── N  Insumo
+Proveedor            1 ──── N  OrdenCompra
+OrdenCompra          1 ──── N  DetalleOrden
+Insumo               1 ──── N  DetalleOrden
+Receta               1 ──── N  RecetaIngrediente
+Insumo               1 ──── N  RecetaIngrediente
+Insumo               1 ──── N  MovimientoInventario
 
-OrdenCompra → contiene → DetalleOrden
+[Proyecto Sistema de Inventario Restaurante.xlsx](https://github.com/user-attachments/files/26061518/Proyecto.Sistema.de.Inventario.Restaurante.xlsx)
 
-Receta → contiene → Ingredientes
+🚀 Plan de Lanzamientos
+Release 1 — Segundo Corte: Base Backend + Frontend
 
-MovimientoInventario → registra → entradas/salidas
+📅 Cierre: 17 de Abril de 2026 · Sprints 1, 2 y 3
+Objetivo: Entregar la API REST con la arquitectura en capas y el frontend con las vistas CRUD para insumos, proveedores, categorías y gestión básica de órdenes de compra.
 
-📊 Entidades
+[Proyecto Sistema de Inventario Restaurante (1).xlsx](https://github.com/user-attachments/files/26061594/Proyecto.Sistema.de.Inventario.Restaurante.1.xlsx)
 
-Insumo
+Release 2 — Tercer Corte: Integración + Reportes
 
-id, nombre, stockActual, stockMinimo, unidadMedida, categoriaId
+📅 Cierre: 22 de Mayo de 2026 · Sprints 4 y 5
+Objetivo: Integración completa frontend ↔ backend, flujos complejos (alertas, costeo), reportes y movimientos. Despliegue funcional con Docker.
 
-Categoria
+[Proyecto Sistema de Inventario Restaurante (5).xlsx](https://github.com/user-attachments/files/26061720/Proyecto.Sistema.de.Inventario.Restaurante.5.xlsx)
 
-id, nombre
 
-Proveedor
 
-id, nombre, contacto, telefono, email
 
-OrdenCompra
 
-id, proveedorId, fecha, estado
 
-DetalleOrden
 
-id, ordenId, insumoId, cantidad, precio
 
-Receta
-
-id, nombre, descripcion
-
-RecetaIngrediente
-
-id, recetaId, insumoId, cantidad
-
-MovimientoInventario
-
-id, insumoId, tipo, cantidad, fecha
-
-📌 Casos de Uso
-Código	Descripción
-CU-01	Registrar insumos
-CU-02	Gestionar proveedores
-CU-03	Crear orden de compra
-CU-04	Registrar recepción
-CU-05	Crear recetas
-CU-06	Calcular costo
-CU-07	Alertar stock mínimo
-CU-08	Consultar movimientos
-CU-09	Categorizar insumos
-CU-10	Reportes de consumo
-🚀 Plan de Desarrollo (Sprints)
-🟢 Sprint 1
-
-CRUD Insumos
-
-CRUD Categorías
-
-Configuración Prisma
-
-🟡 Sprint 2
-
-CRUD Proveedores
-
-Órdenes de compra
-
-Detalle de órdenes
-
-🟠 Sprint 3
-
-Recetas e ingredientes
-
-Cálculo de costos
-
-🔵 Sprint 4
-
-Movimientos de inventario
-
-Alertas de stock
-
-🔴 Sprint 5
-
-Reportes
-
-Integración completa
-
-✅ Definición de Hecho (DoD)
-Backend
-
-Arquitectura en capas implementada
-
-DTOs con validación
-
-Manejo de errores adecuado
-
-Endpoints funcionales
-
-Frontend
-
-Formularios funcionales
-
-Consumo correcto de API
-
-Manejo de estados
-
-Diseño responsive
-
-Infraestructura
-
-Docker funcionando correctamente
-
-Migraciones aplicadas
-
-Código versionado en GitHub
-
-⚙️ Instalación y Ejecución
-🔹 Prerrequisitos
-
-Docker
-
-Git
-
-🔹 Clonar repositorio
-git clone https://github.com/tu-repo/inventario-restaurante.git
-cd inventario-restaurante
-🔹 Configurar variables de entorno
-cp .env.example .env
-
-Ejemplo:
-
-DB_USER=admin
-DB_PASSWORD=admin123
-DB_NAME=inventario_db
-🔹 Levantar servicios
-docker compose up
-🔹 Ejecutar migraciones
-docker compose exec backend sh
-
-npx prisma migrate dev
-npx prisma generate
-🔹 Acceso a la aplicación
-Servicio	URL
-Frontend	http://localhost:3000
-
-Backend	http://localhost:3001
-
-PostgreSQL	localhost:5432
-👩‍💻 Autores
-
-Lizeth Lorena Caicedo Mora
-
-Lilly Signey Puentes Rincón
-
-🎓 Información Académica
-
-Programa: Ingeniería de Sistemas
-Asignatura: Programación Web
-Periodo: 2026A
-Institución: CORHUILA
-
-⭐ Notas Finales
-
-Este proyecto aplica buenas prácticas como:
-
-Arquitectura modular
-
-Separación de responsabilidades
-
-Uso de ORM (Prisma)
-
-Contenerización con Docker
-
-Desarrollo full-stack moderno
