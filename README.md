@@ -1,4 +1,4 @@
-🍽️ Sistema de Inventario para Restaurante
+#🍽️ Sistema de Inventario para Restaurante
 
 Proyecto full-stack guiado por el docente — Programación Web 2026A**
 Equipo de Desarrollo:** Lizeth Lorena Caicedo Mora, Lilly Signey Puentes Rincón
@@ -86,6 +86,29 @@ proyecto/
 │   │   └── services/               # Consumo de la API REST
 │   └── package.json
 └── README.md
-Tablero Kanban
 
-Instalación y Ejecución
+📊 Modelo de Datos
+Diagrama de Relaciones
+
+Categoria            1 ──── N  Insumo
+Proveedor            1 ──── N  OrdenCompra
+OrdenCompra          1 ──── N  DetalleOrden
+Insumo               1 ──── N  DetalleOrden
+Receta               1 ──── N  RecetaIngrediente
+Insumo               1 ──── N  RecetaIngrediente
+Insumo               1 ──── N  MovimientoInventario
+
+Entidad,Campos Principales
+Categoria,"id, nombre (único), descripcion"
+Insumo,"id, nombre (único), unidadMedida, precioActual, stockActual, stockMinimo, categoriaId"
+Proveedor,"id, razonSocial, nit (único), telefono, email, tiempoEntregaDias"
+OrdenCompra,"id, proveedorId, fechaEmision, estado (Pendiente/Recibida/Cancelada), total"
+DetalleOrden,"id, ordenCompraId, insumoId, cantidad, precioUnitario"
+Receta,"id, nombre (único), descripcion, porciones"
+RecetaIngrediente,"id, recetaId, insumoId, cantidadRequerida"
+MovInventario,"id, insumoId, tipo (ENTRADA/SALIDA), cantidad, fecha, motivo"
+
+Sprint,Período,HUs,Alcance
+Sprint 1,16 Mar → 29 Mar,"HU-01, HU-02, HU-03","Docker, Prisma, Categorías, Insumos, Proveedores"
+Sprint 2,30 Mar → 10 Abr,"HU-04, HU-05, HU-11","Órdenes de Compra, Recepción, Módulo Común"
+Sprint 3,13 Abr → 17 Abr,"HU-06, HU-07, HU-12","Recetas, Cálculo de Costos, Base Frontend"
