@@ -106,14 +106,14 @@ proyecto/
 
 ```
 
-Estudiante          1 ──── N  Matricula
-Docente             1 ──── N  AsignacionDocente
-ProgramaAcademico   1 ──── N  Estudiante
-ProgramaAcademico   1 ──── N  Asignatura
-Asignatura          1 ──── N  AsignacionDocente
-PeriodoAcademico    1 ──── N  AsignacionDocente
-AsignacionDocente   1 ──── N  Matricula
-Matricula           1 ──── 1  Calificacion
+Categoria            1 ──── N  Insumo
+Proveedor            1 ──── N  OrdenCompra
+OrdenCompra          1 ──── N  DetalleOrden
+Insumo               1 ──── N  DetalleOrden
+Receta               1 ──── N  RecetaIngrediente
+Insumo               1 ──── N  RecetaIngrediente
+Insumo               1 ──── N  MovimientoInventario
+
 ```
 
 
@@ -128,7 +128,7 @@ Matricula           1 ──── 1  Calificacion
 | **DetalleOrden** | id, ordenCompraId (FK), insumoId (FK), cantidad, precioUnitario (unique compound: orden-insumo) |
 | **Receta** | id, nombre (unique), descripcion, porciones |
 | **RecetaIngrediente** | id, recetaId (FK), insumoId (FK), cantidadRequerida (unique compound: receta-insumo) |
-| **MovInventario** | id, insumoId (FK), tipo (ENTRADA/SALIDA), cantidad, fecha, motivo |
+| **MovimientoInventario** | id, insumoId (FK), tipo (ENTRADA/SALIDA), cantidad, fecha, motivo |
 
 ---
 
@@ -137,14 +137,13 @@ Matricula           1 ──── 1  Calificacion
 ### Release 1 — Segundo Corte: Base Backend + Frontend
 > 📅 Cierre: 17 de Abril de 2026 · Sprints 1, 2 y 3
  #### Objetivo:
-  Entregar la API REST con la arquitectura en capas y el frontend con las vistas CRUD para insumos, proveedores, categorías y gestión básica de órdenes de compra.
-
-
+ Entregar la API REST con arquitectura en capas y el frontend base con los módulos fundamentales de categorías, insumos, proveedores, compras, recetas y navegación principal.
+ 
 | Sprint | Período | HUs | Alcance |
 | :--- | :--- | :--- | :--- |
 | **Sprint 1** | 16 Mar → 29 Mar | HU-01, HU-02, HU-03 | Docker, Prisma, Categorías, Insumos, Proveedores |
-| **Sprint 2** | 30 Mar → 10 Abr | HU-04, HU-05, HU-11 | Órdenes de Compra, Recepción, Módulo Común |
-| **Sprint 3** | 13 Abr → 17 Abr | HU-06, HU-07, HU-12 | Recetas, Cálculo de Costos, Base Frontend |
+| **Sprint 2** | 30 Mar → 10 Abr | HU-04, HU-05 | Órdenes de Compra, Recepción de mercancia |
+| **Sprint 3** | 13 Abr → 17 Abr | HU-06, HU-07, HU-12 | Recetas, costos y layout base |
 
 
  ### Release 2 — Tercer Corte: Integración + Reportes
@@ -154,13 +153,109 @@ Matricula           1 ──── 1  Calificacion
 
 | Sprint | Período | HUs | Alcance |
 | :--- | :--- | :--- | :--- |
-| **Sprint 4** | 20 Abr → 08 May | HU-08, HU-13 | Frontend avanzado, Alertas de stock mínimo, Layout |
-| **Sprint 5** | 11 May → 22 May | HU-09, HU-10 | Movimientos de inventario, Reportes, Pruebas E2E |
+| **Sprint 4** | 20 Abr → 08 May | HU-08, HU-09, HU-10, HU-13 | Alertas, movimientos, mermas y dashboard |
+| **Sprint 5** | 11 May → 22 May | HU-11, HU-14 | Reportes, autenticación, roles y cierre |
 ---
 ## 📌 Sprints e Historias de Usuario
 
-Para ver el detalle completo de los Criterios de Aceptación, consultar los Issues en GitHub.
+### Sprint 1 — Gestión de Catálogos e Insumos
 
+> 📅 **16 de marzo → 29 de marzo** · 🚫 **Festivo: 23 de marzo (San José)** · [Ver Milestone](#)
+
+| # | Historia de Usuario | Etiquetas | Asunto |
+|---|---|---|---|
+| HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | [#1](#) |
+| HU-02 | Gestión de Proveedores | `user-story` `backend` `frontend` | [#2](#) |
+| HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | [#3](#) |
+
+**Entregables:**
+
+- Docker Compose con PostgreSQL, NestJS y Next.js
+- Prisma schema con entidades `Categoria`, `Insumo` y `Proveedor`
+- Migraciones ejecutadas
+- CRUD completo (Controller → Service → Repository) para categorías, insumos y proveedores
+- Frontend: listados y formularios básicos
+
+---
+
+### Sprint 2 — Compras y Abastecimiento
+
+> 📅 **30 de marzo → 10 de abril** · 🚫 **Festivos: 2 y 3 de abril (Semana Santa)** · [Ver Milestone](#)
+
+| # | Historia de Usuario | Etiquetas | Asunto |
+|---|---|---|---|
+| HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | [#4](#) |
+| HU-05 | Recepción de Mercancía | `user-story` `backend` | [#5](#) |
+
+**Entregables:**
+
+- CRUD de órdenes de compra y detalle de órdenes
+- Asociación de un proveedor con múltiples insumos
+- Validación de cantidades y lista de insumos no vacía
+- Actualización automática del stock al recibir mercancía
+- Registro automático de movimientos de inventario tipo entrada por compra
+
+---
+
+### Sprint 3 — Gestión de Menú y Frontend Base
+
+> 📅 **13 de abril → 17 de abril** · 📝 **Cierre Segundo Corte: 17 de abril** · [Ver Milestone](#)
+
+| # | Historia de Usuario | Etiquetas | Asunto |
+|---|---|---|---|
+| HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | [#6](#) |
+| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` | [#7](#) |
+| HU-12 | Estructura de Navegación y Layout Base | `user-story` `frontend` | [#12](#) |
+
+**Entregables:**
+
+- CRUD de recetas
+- Asociación de ingredientes con cantidades requeridas
+- Validación para evitar ingredientes repetidos en una receta
+- Cálculo dinámico del costo estimado de cada receta
+- Layout base del sistema con navegación responsive
+- Vistas CRUD conectadas mediante routing en Next.js
+
+---
+
+### Sprint 4 — Control, Trazabilidad y Dashboard
+
+> 📅 **20 de abril → 8 de mayo** · 🚫 **Festivo: 1 de mayo (Día del Trabajo)** · [Ver Milestone](#)
+
+| # | Historia de Usuario | Etiquetas | Asunto |
+|---|---|---|---|
+| HU-08 | Alertas de Stock Mínimo | `user-story` `backend` `frontend` | [#8](#) |
+| HU-09 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | [#9](#) |
+| HU-10 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | [#10](#) |
+| HU-13 | Dashboard Principal y Panel de Alertas | `user-story` `frontend` `dashboard` | [#13](#) |
+
+**Entregables:**
+
+- Alertas visuales para stock crítico
+- Filtro de insumos en estado crítico
+- Consulta de movimientos por rango de fechas e insumo
+- Registro manual de salidas por merma o ajuste
+- Dashboard principal con resumen visual del inventario
+
+---
+
+### Sprint 5 — Reportes, Seguridad y Cierre
+
+> 📅 **11 de mayo → 22 de mayo** · 🚫 **Festivo: 18 de mayo (Día de la Ascensión)** · 📝 **Cierre Tercer Corte: 22 de mayo** · [Ver Milestone](#)
+
+| # | Historia de Usuario | Etiquetas | Asunto |
+|---|---|---|---|
+| HU-11 | Reportes de Consumo y Gastos | `user-story` `backend` `frontend` `reporte` | [#11](#) |
+| HU-14 | Autenticación de Usuarios y Control de Acceso | `user-story` `backend` `frontend` `security` | [#14](#) |
+
+**Entregables:**
+
+- Reporte de insumos de mayor rotación
+- Reporte de gastos por proveedor
+- Inicio de sesión seguro con validación de credenciales
+- Gestión de roles y control de acceso
+- Persistencia de sesión
+- Validación final del sistema con Docker Compose y pruebas de cierre
 ---
 
 
