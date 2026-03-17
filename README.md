@@ -100,22 +100,22 @@ Receta               1 ──── N  RecetaIngrediente
 Insumo               1 ──── N  RecetaIngrediente
 Insumo               1 ──── N  MovimientoInventario
 
-[Proyecto Sistema de Inventario Restaurante.xlsx](https://github.com/user-attachments/files/26061518/Proyecto.Sistema.de.Inventario.Restaurante.xlsx)
+Entidad	Campos Principales
+Categoria	id, nombre (único), descripcion
+Insumo	id, nombre (único), unidadMedida, precioActual, stockActual, stockMinimo, categoriaId
+Proveedor	id, razonSocial, nit (único), telefono, email, tiempoEntregaDias
+OrdenCompra	id, proveedorId, fechaEmision, estado (Pendiente/Recibida/Cancelada), total
+DetalleOrden	id, ordenCompraId, insumoId, cantidad, precioUnitario
+Receta	id, nombre (único), descripcion, porciones
+RecetaIngrediente	id, recetaId, insumoId, cantidadRequerida
+MovInventario	id, insumoId, tipo (ENTRADA/SALIDA), cantidad, fecha, motivo
+<img width="617" height="190" alt="image" src="https://github.com/user-attachments/assets/1035343e-f503-4753-9876-0b1baf49f0a1" />
+
 
 🚀 Plan de Lanzamientos
 Release 1 — Segundo Corte: Base Backend + Frontend
 
 📅 Cierre: 17 de Abril de 2026 · Sprints 1, 2 y 3
-Objetivo: Entregar la API REST con la arquitectura en capas y el frontend con las vistas CRUD para insumos, proveedores, categorías y gestión básica de órdenes de compra.
-
-[Proyecto Sistema de Inventario Restaurante (1).xlsx](https://github.com/user-attachments/files/26061594/Proyecto.Sistema.de.Inventario.Restaurante.1.xlsx)
-
-Release 2 — Tercer Corte: Integración + Reportes
-
-📅 Cierre: 22 de Mayo de 2026 · Sprints 4 y 5
-Objetivo: Integración completa frontend ↔ backend, flujos complejos (alertas, costeo), reportes y movimientos. Despliegue funcional con Docker.
-
-[Proyecto Sistema de Inventario Restaurante (5).xlsx](https://github.com/user-attachments/files/26061720/Proyecto.Sistema.de.Inventario.Restaurante.5.xlsx)
 
 
 
