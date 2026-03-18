@@ -410,7 +410,7 @@ npx prisma generate
 | Recurso | Enlace |
 |---|---|
 | 📋 Tablero Kanban | |
-| 📌 Issues (todos) | [Ver Issues]() |
+| 📌 Issues (todos) | [Ver Issues](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues) |
 | 🏁 Sprint 1 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2) |
 | 🏁 Sprint 2 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3) |
 | 🏁 Sprint 3 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4) |
