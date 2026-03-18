@@ -164,7 +164,7 @@ Insumo               1 ──── N  MovimientoInventario
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | [#1](#) |
+| HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/1) |
 | HU-02 | Gestión de Proveedores | `user-story` `backend` `frontend` | [#2](#) |
 | HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | [#3](#) |
 
