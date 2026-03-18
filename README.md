@@ -185,7 +185,7 @@ Insumo               1 ──── N  MovimientoInventario
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
 | HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/4) |
-| HU-05 | Recepción de Mercancía | `user-story` `backend` |[(https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) |
+| HU-05 | Recepción de Mercancía | `user-story` `backend` |(https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) |
 
 **Entregables:**
 
@@ -204,8 +204,8 @@ Insumo               1 ──── N  MovimientoInventario
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
 | HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/6) |
-| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` |[ (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) |
-| HU-12 | Estructura de Navegación y Layout Base | `user-story` `frontend` | [#12](#) |
+| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) |
+| HU-12 | Estructura de Navegación y Layout Base | `user-story` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/12)|
 
 **Entregables:**
 
@@ -225,9 +225,9 @@ Insumo               1 ──── N  MovimientoInventario
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
 | HU-08 | Alertas de Stock Mínimo | `user-story` `backend` `frontend` |  (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/8) |
-| HU-09 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | [#9](#) |
-| HU-10 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | [#10](#) |
-| HU-13 | Dashboard Principal y Panel de Alertas | `user-story` `frontend` `dashboard` | [#13](#) |
+| HU-09 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/9) |
+| HU-10 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/10)|
+| HU-13 | Dashboard Principal y Panel de Alertas | `user-story` `frontend` `dashboard` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/13) |
 
 **Entregables:**
 
@@ -245,8 +245,8 @@ Insumo               1 ──── N  MovimientoInventario
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-11 | Reportes de Consumo y Gastos | `user-story` `backend` `frontend` `reporte` | [#11](#) |
-| HU-14 | Autenticación de Usuarios y Control de Acceso | `user-story` `backend` `frontend` `security` | [#14](#) |
+| HU-11 | Reportes de Consumo y Gastos | `user-story` `backend` `frontend` `reporte` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/11) |
+| HU-14 | Autenticación de Usuarios y Control de Acceso | `user-story` `backend` `frontend` `security` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/14) |
 
 **Entregables:**
 
@@ -256,8 +256,80 @@ Insumo               1 ──── N  MovimientoInventario
 - Gestión de roles y control de acceso
 - Persistencia de sesión
 - Validación final del sistema con Docker Compose y pruebas de cierre
+  
 ---
 
+## 📅 Cronograma
+
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                    SEGUNDO CORTE (Release 1) — Cierre: 17 Abr 2026          │
+│                          Backend + Frontend Base                             │
+├─────────────────────┬─────────────────────┬──────────────────────────────────┤
+│  Sprint 1           │    Sprint 2         │         Sprint 3                 │
+│  Mar 16 → Mar 29    │  Mar 30 → Abr 10    │   Abr 13 → Abr 17              │
+│                     │                     │                                  │
+│ • Docker + Prisma   │ • Asignatura        │ • Matrícula                      │
+│ • Estudiante        │ • Período           │ • Calificación                   │
+│ • Docente           │ • Asignación Doc    │ • Common Module                  │
+│ • Programa          │ • Filters/Pipes     │ • Frontend: listados y forms     │
+│                     │                     │                                  │
+│ 🚫 Mar 23          │ 🚫 Abr 2-3         │                                  │
+│   (San José)        │   (Semana Santa)    │                                  │
+├─────────────────────┴─────────────────────┴──────────────────────────────────┤
+│                    TERCER CORTE (Release 2) — Cierre: 22 May 2026           │
+│                          Integración + Reportes                              │
+├────────────────────────────────────┬─────────────────────────────────────────┤
+│        Sprint 4                    │          Sprint 5                       │
+│        Abr 20 → May 8             │          May 11 → May 22               │
+│                                    │                                         │
+│ • Frontend matrículas              │ • Historial académico                   │
+│ • Frontend calificaciones          │ • Reporte de matriculados               │
+│ • Navegación y layout              │ • Promedio acumulado                    │
+│ • Selects dinámicos                │ • Pruebas E2E                           │
+│                                    │                                         │
+│ 🚫 May 1                          │ 🚫 May 18                              │
+│   (Día del Trabajo)               │   (Día de la Ascensión)                │
+└────────────────────────────────────┴─────────────────────────────────────────┘
+```
+
+### Festivos Colombianos (Marzo — Mayo 2026)
+
+| Fecha | Festivo | Sprint Afectado |
+|---|---|---|
+| Lunes 23 de Marzo | Día de San José | Sprint 1 |
+| Jueves 2 de Abril | Jueves Santo | Sprint 2 |
+| Viernes 3 de Abril | Viernes Santo | Sprint 2 |
+| Viernes 1 de Mayo | Día del Trabajo | Sprint 4 |
+| Lunes 18 de Mayo | Día de la Ascensión | Sprint 5 |
+
+---
+## ✅ Definición de Hecho (DoD)
+
+> 📌 Referencia completa: [Issue #15 — Definition of Done](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/15)
+
+Cada Historia de Usuario se considera terminada cuando cumple todos los siguientes criterios:
+
+### Backend
+- [ ] Endpoints implementados con arquitectura en capas: Controlador → Servicio → Repositorio
+- [ ] DTOs con validaciones usando class-validator y class-transformer
+- [ ] Manejo de errores con excepciones HTTP apropiadas (NotFoundException, ConflictException, BadRequestException)
+- [ ] Respuestas con formato uniforme (interceptor aplicado)
+- [ ] Endpoint probado manualmente con Postman o Thunder Client y funcionando correctamente
+
+### Frontend
+- [ ] Páginas implementadas con componentes reutilizables
+- [ ] Consumo del API a través de la capa de services/
+- [ ] Manejo de estados: carga (loading), éxito y error
+- [ ] Formularios con validación del lado del cliente
+- [ ] Diseño responsivo y navegable
+
+### Infraestructura y Código
+- [ ] Código versionado en GitHub con commits descriptivos
+- [ ] El servicio funciona correctamente con docker compose up
+- [ ] No hay errores de consola ni advertencias críticas
+- [ ] Las migraciones de Prisma están aplicadas y el esquema es consistente
+---
 
 
 
