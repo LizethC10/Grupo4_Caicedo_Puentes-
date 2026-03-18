@@ -166,7 +166,7 @@ Insumo               1 ──── N  MovimientoInventario
 |---|---|---|---|
 | HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/1) |
 | HU-02 | Gestión de Proveedores | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/2) |
-| HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | [#3](#) |
+| HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/3) |
 
 **Entregables:**
 
@@ -184,8 +184,8 @@ Insumo               1 ──── N  MovimientoInventario
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | [#4](#) |
-| HU-05 | Recepción de Mercancía | `user-story` `backend` | [#5](#) |
+| HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/4) |
+| HU-05 | Recepción de Mercancía | `user-story` `backend` |[(https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) |
 
 **Entregables:**
 
@@ -203,8 +203,8 @@ Insumo               1 ──── N  MovimientoInventario
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | [#6](#) |
-| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` | [#7](#) |
+| HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/6) |
+| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` |[ (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) |
 | HU-12 | Estructura de Navegación y Layout Base | `user-story` `frontend` | [#12](#) |
 
 **Entregables:**
@@ -224,7 +224,7 @@ Insumo               1 ──── N  MovimientoInventario
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-08 | Alertas de Stock Mínimo | `user-story` `backend` `frontend` | [#8](#) |
+| HU-08 | Alertas de Stock Mínimo | `user-story` `backend` `frontend` |  (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/8) |
 | HU-09 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | [#9](#) |
 | HU-10 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | [#10](#) |
 | HU-13 | Dashboard Principal y Panel de Alertas | `user-story` `frontend` `dashboard` | [#13](#) |
