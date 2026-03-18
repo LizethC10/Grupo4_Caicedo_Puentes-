@@ -25,6 +25,7 @@ Lilly Signey Puentes Rincón
 8. [Definición de Hecho (DoD)](#-definición-de-hecho-dod)
 9. [Tablero Kanban](#-tablero-kanban)
 10. [Instalación y Ejecución](#-instalación-y-ejecución)
+11. [Enlaces Rápidos](#-Enlaces-Rápidos)
 
 ---
 
