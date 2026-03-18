@@ -160,7 +160,7 @@ Insumo               1 ──── N  MovimientoInventario
 
 ### Sprint 1 — Gestión de Catálogos e Insumos
 
-> 📅 **16 de marzo → 29 de marzo** · 🚫 **Festivo: 23 de marzo (San José)** · [Ver Milestone](#)
+> 📅 **16 de marzo → 29 de marzo** · 🚫 **Festivo: 23 de marzo (San José)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2)
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
@@ -180,7 +180,7 @@ Insumo               1 ──── N  MovimientoInventario
 
 ### Sprint 2 — Compras y Abastecimiento
 
-> 📅 **30 de marzo → 10 de abril** · 🚫 **Festivos: 2 y 3 de abril (Semana Santa)** · [Ver Milestone](#)
+> 📅 **30 de marzo → 10 de abril** · 🚫 **Festivos: 2 y 3 de abril (Semana Santa)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3)
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
@@ -199,7 +199,7 @@ Insumo               1 ──── N  MovimientoInventario
 
 ### Sprint 3 — Gestión de Menú y Frontend Base
 
-> 📅 **13 de abril → 17 de abril** · 📝 **Cierre Segundo Corte: 17 de abril** · [Ver Milestone](#)
+> 📅 **13 de abril → 17 de abril** · 📝 **Cierre Segundo Corte: 17 de abril** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4)
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
@@ -220,7 +220,7 @@ Insumo               1 ──── N  MovimientoInventario
 
 ### Sprint 4 — Control, Trazabilidad y Dashboard
 
-> 📅 **20 de abril → 8 de mayo** · 🚫 **Festivo: 1 de mayo (Día del Trabajo)** · [Ver Milestone](#)
+> 📅 **20 de abril → 8 de mayo** · 🚫 **Festivo: 1 de mayo (Día del Trabajo)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5)
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
@@ -241,7 +241,7 @@ Insumo               1 ──── N  MovimientoInventario
 
 ### Sprint 5 — Reportes, Seguridad y Cierre
 
-> 📅 **11 de mayo → 22 de mayo** · 🚫 **Festivo: 18 de mayo (Día de la Ascensión)** · 📝 **Cierre Tercer Corte: 22 de mayo** · [Ver Milestone](#)
+> 📅 **11 de mayo → 22 de mayo** · 🚫 **Festivo: 18 de mayo (Día de la Ascensión)** · 📝 **Cierre Tercer Corte: 22 de mayo** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/6)
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
@@ -411,11 +411,11 @@ npx prisma generate
 |---|---|
 | 📋 Tablero Kanban | |
 | 📌 Issues (todos) | [Ver Issues]() |
-| 🏁 Sprint 1 | [Milestone]() |
-| 🏁 Sprint 2 | [Milestone]() |
-| 🏁 Sprint 3 | [Milestone]() |
-| 🏁 Sprint 4 | [Milestone]() |
-| 🏁 Sprint 5 | [Milestone]() |
+| 🏁 Sprint 1 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2) |
+| 🏁 Sprint 2 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3) |
+| 🏁 Sprint 3 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4) |
+| 🏁 Sprint 4 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5) |
+| 🏁 Sprint 5 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/6) |
 | ✅ Definición de Hecho (DoD) | [Issue #15](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/15) |
 
 ---
