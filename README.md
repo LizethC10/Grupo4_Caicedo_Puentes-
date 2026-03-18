@@ -263,33 +263,33 @@ Insumo               1 ──── N  MovimientoInventario
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│                    SEGUNDO CORTE (Release 1) — Cierre: 17 Abr 2026          │
+│                    SEGUNDO CORTE (Release 1) — Cierre: 17 Abr 2026           │
 │                          Backend + Frontend Base                             │
 ├─────────────────────┬─────────────────────┬──────────────────────────────────┤
 │  Sprint 1           │    Sprint 2         │         Sprint 3                 │
-│  Mar 16 → Mar 29    │  Mar 30 → Abr 10    │   Abr 13 → Abr 17              │
+│  Mar 16 → Mar 29    │  Mar 30 → Abr 10    │   Abr 13 → Abr 17                │
 │                     │                     │                                  │
 │ • Docker + Prisma   │ • Asignatura        │ • Matrícula                      │
 │ • Estudiante        │ • Período           │ • Calificación                   │
 │ • Docente           │ • Asignación Doc    │ • Common Module                  │
 │ • Programa          │ • Filters/Pipes     │ • Frontend: listados y forms     │
 │                     │                     │                                  │
-│ 🚫 Mar 23          │ 🚫 Abr 2-3         │                                  │
+│ 🚫 Mar 23          │ 🚫 Abr 2-3          │                                  │
 │   (San José)        │   (Semana Santa)    │                                  │
 ├─────────────────────┴─────────────────────┴──────────────────────────────────┤
-│                    TERCER CORTE (Release 2) — Cierre: 22 May 2026           │
+│                    TERCER CORTE (Release 2) — Cierre: 22 May 2026            │
 │                          Integración + Reportes                              │
 ├────────────────────────────────────┬─────────────────────────────────────────┤
 │        Sprint 4                    │          Sprint 5                       │
-│        Abr 20 → May 8             │          May 11 → May 22               │
+│        Abr 20 → May 8              │          May 11 → May 22                │
 │                                    │                                         │
 │ • Frontend matrículas              │ • Historial académico                   │
 │ • Frontend calificaciones          │ • Reporte de matriculados               │
 │ • Navegación y layout              │ • Promedio acumulado                    │
 │ • Selects dinámicos                │ • Pruebas E2E                           │
 │                                    │                                         │
-│ 🚫 May 1                          │ 🚫 May 18                              │
-│   (Día del Trabajo)               │   (Día de la Ascensión)                │
+│ 🚫 May 1                           │  🚫 May 18                             │
+│   (Día del Trabajo)                │   (Día de la Ascensión)                 │
 └────────────────────────────────────┴─────────────────────────────────────────┘
 ```
 
@@ -329,7 +329,101 @@ Cada Historia de Usuario se considera terminada cuando cumple todos los siguient
 - [ ] El servicio funciona correctamente con docker compose up
 - [ ] No hay errores de consola ni advertencias críticas
 - [ ] Las migraciones de Prisma están aplicadas y el esquema es consistente
+
 ---
+## 📊 Tablero Kanban
+
+El seguimiento del proyecto se realiza mediante un tablero Kanban en GitHub Projects:
+
+🔗 **[Ver Tablero Kanban]()**
+
+El tablero incluye:
+- **Columnas:** Todo → In Progress → Done
+- **Campos personalizados:** Sprint, Release, Prioridad
+- **Vistas:** Board (Kanban), Table, Roadmap
+
+---
+
+## ⚙ Instalación y Ejecución
+
+### Prerrequisitos
+
+- [Docker](https://www.docker.com/products/docker-desktop/) y Docker Compose instalados
+- [Git](https://git-scm.com/downloads)
+
+### Clonar el repositorio
+
+```bash
+git clone (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-.git)
+cd  LizethC10/Grupo4_Caicedo_Puentes-
+```
+
+### Configurar variables de entorno
+
+```bash
+# Copiar el archivo de ejemplo
+cp .env.example .env
+```
+
+```env
+# .env.example
+DB_USER=admin
+DB_PASSWORD=admin123
+DB_NAME=gestion_academica_db
+```
+
+### Levantar los servicios
+
+```bash
+# Levantar todos los servicios con Docker Compose
+docker compose up
+
+# O en modo detached (segundo plano)
+docker compose up -d
+```
+
+### Acceder a los servicios
+
+| Servicio | URL |
+|---|---|
+| **Frontend (Next.js)** | [http://localhost:3000](http://localhost:3000) |
+| **Backend (NestJS API)** | [http://localhost:3001](http://localhost:3001) |
+| **PostgreSQL** | `localhost:5432` |
+
+### Ejecutar migraciones de Prisma
+
+```bash
+# Entrar al contenedor del backend
+docker compose exec backend sh
+
+# Ejecutar migraciones
+npx prisma migrate dev
+
+# Generar el cliente Prisma
+npx prisma generate
+```
+
+---
+
+## 📎 Enlaces Rápidos
+
+| Recurso | Enlace |
+|---|---|
+| 📋 Tablero Kanban | |
+| 📌 Issues (todos) | [Ver Issues]() |
+| 🏁 Sprint 1 | [Milestone]() |
+| 🏁 Sprint 2 | [Milestone]() |
+| 🏁 Sprint 3 | [Milestone]() |
+| 🏁 Sprint 4 | [Milestone]() |
+| 🏁 Sprint 5 | [Milestone]() |
+| ✅ Definición de Hecho (DoD) | [Issue #15](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/15) |
+
+---
+
+<p align="center">
+  <strong>Programación Web — Ingeniería de Sistemas — 2026A</strong><br>
+  <em>Corporación Universitaria del Huila — CORHUILA</em>
+</p>
 
 
 
