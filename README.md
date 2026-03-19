@@ -262,34 +262,38 @@ Insumo               1 ──── N  MovimientoInventario
 
 ## 📅 Cronograma
 
+
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │                    SEGUNDO CORTE (Release 1) — Cierre: 17 Abr 2026           │
-│                          Backend + Frontend Base                             │
+│                         Backend + Frontend Base                              │
 ├─────────────────────┬─────────────────────┬──────────────────────────────────┤
 │  Sprint 1           │    Sprint 2         │         Sprint 3                 │
 │  Mar 16 → Mar 29    │  Mar 30 → Abr 10    │   Abr 13 → Abr 17                │
 │                     │                     │                                  │
-│ • Docker + Prisma   │ • Asignatura        │ • Matrícula                      │
-│ • Estudiante        │ • Período           │ • Calificación                   │
-│ • Docente           │ • Asignación Doc    │ • Common Module                  │
-│ • Programa          │ • Filters/Pipes     │ • Frontend: listados y forms     │
-│                     │                     │                                  │
-│ 🚫 Mar 23          │ 🚫 Abr 2-3          │                                  │
-│   (San José)        │   (Semana Santa)    │                                  │
+│ • Docker            │ • Órdenes de compra │ • Recetas                        │
+│ • Prisma            │ • Recepción         │ • Costos de receta               │
+│ • Categorías        │ • Common Module     │ • Movimientos                    │
+│ • Insumos           │ • Filters/Pipes     │ • Mermas y ajustes               │
+│ • Proveedores       │                     │ • Reportes básicos               │
+│                     │                     │ • Frontend: listados y forms     │
+│                     │ 🚫 Abr 2-3          │                                  │
+│ 🚫 Mar 23           │   (Semana Santa)    │                                  │
+│   (San José)        │                     │                                  │
 ├─────────────────────┴─────────────────────┴──────────────────────────────────┤
 │                    TERCER CORTE (Release 2) — Cierre: 22 May 2026            │
-│                          Integración + Reportes                              │
+│                    Integración + Seguridad + Despliegue                      │
 ├────────────────────────────────────┬─────────────────────────────────────────┤
 │        Sprint 4                    │          Sprint 5                       │
 │        Abr 20 → May 8              │          May 11 → May 22                │
 │                                    │                                         │
-│ • Frontend matrículas              │ • Historial académico                   │
-│ • Frontend calificaciones          │ • Reporte de matriculados               │
-│ • Navegación y layout              │ • Promedio acumulado                    │
-│ • Selects dinámicos                │ • Pruebas E2E                           │
+│ • Autenticación                    │ • Pruebas finales                       │
+│ • Login                            │ • Ajustes de integración                │
+│ • Roles y permisos                 │ • Validación general                    │
+│ • Integración frontend-backend     │ • Docker compose validación final       │
+│ • Navegación final                 │ • Preparación de sustentación           │
 │                                    │                                         │
-│ 🚫 May 1                           │  🚫 May 18                             │
+│ 🚫 May 1                           │ 🚫 May 18                              │
 │   (Día del Trabajo)                │   (Día de la Ascensión)                 │
 └────────────────────────────────────┴─────────────────────────────────────────┘
 ```
