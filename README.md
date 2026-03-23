@@ -137,26 +137,29 @@ Insumo               1 ──── N  MovimientoInventario
 
 ### Release 1 — Segundo Corte: Base Backend + Frontend
 > 📅 Cierre: 17 de Abril de 2026 · Sprints 1, 2 y 3
- #### Objetivo:
- Entregar la API REST con arquitectura en capas y el frontend base con los módulos fundamentales de categorías, insumos, proveedores, compras, recetas y navegación principal.
- 
+
+#### Objetivo:
+Entregar la API REST con arquitectura en capas y el frontend base con los módulos fundamentales de categorías, insumos, proveedores, compras, recetas y trazabilidad inicial del inventario.
+
 | Sprint | Período | HUs | Alcance |
 | :--- | :--- | :--- | :--- |
 | [Sprint 1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2) | 16 Mar → 29 Mar | HU-01, HU-02, HU-03 | Docker, Prisma, Categorías, Insumos, Proveedores |
-| [Sprint 2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3) | 30 Mar → 10 Abr | HU-04, HU-05 | Órdenes de Compra, Recepción de mercancia |
-| [Sprint 3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4) | 13 Abr → 17 Abr | HU-06, HU-07, HU-12 | Recetas, costos y layout base |
+| [Sprint 2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3) | 30 Mar → 10 Abr | HU-04, HU-05 | Órdenes de Compra, Recepción de mercancía, Common Module |
+| [Sprint 3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4) | 13 Abr → 17 Abr | HU-06, HU-07 | Recetas y costos |
 
-
- ### Release 2 — Tercer Corte: Integración + Reportes
+### Release 2 — Tercer Corte: Integración, Control y Seguridad
 > 📅 Cierre: 22 de Mayo de 2026 · Sprints 4 y 5
-   #### Objetivo:
-   Integración completa frontend ↔ backend, flujos complejos (alertas, costeo), reportes y movimientos. Despliegue funcional con Docker.
+
+#### Objetivo:
+Completar la integración frontend ↔ backend, trazabilidad de movimientos, control de inventario, reportes, autenticación y cierre funcional del sistema.
 
 | Sprint | Período | HUs | Alcance |
 | :--- | :--- | :--- | :--- |
-| [Sprint 4](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5) | 20 Abr → 08 May | HU-08, HU-09, HU-10, HU-13 | Alertas, movimientos, mermas y dashboard |
-| [Sprint 5](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/6) | 11 May → 22 May | HU-11, HU-14 | Reportes, autenticación, roles y cierre |
+| [Sprint 4](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5) | 20 Abr → 08 May | HU-08, HU-09 | Movimientos y mermas |
+| [Sprint 5](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/6) | 11 May → 22 May | HU-10, HU-11 | Reportes, autenticación, roles y cierre |
+
 ---
+
 ## 📌 Sprints e Historias de Usuario
 
 ### Sprint 1 — Gestión de Catálogos e Insumos
@@ -165,9 +168,9 @@ Insumo               1 ──── N  MovimientoInventario
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/1) |
-| HU-02 | Gestión de Proveedores | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/2) |
-| HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/3) |
+| HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | [#1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/1) |
+| HU-02 | Gestión de Proveedores | `user-story` `backend` `frontend` | [#2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/2) |
+| HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | [#3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/3) |
 
 **Entregables:**
 
@@ -185,8 +188,8 @@ Insumo               1 ──── N  MovimientoInventario
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/4) |
-| HU-05 | Recepción de Mercancía | `user-story` `backend` |(https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) |
+| HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | [#4](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/4) |
+| HU-05 | Recepción de Mercancía | `user-story` `backend` | [#5](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) |
 
 **Entregables:**
 
@@ -195,18 +198,18 @@ Insumo               1 ──── N  MovimientoInventario
 - Validación de cantidades y lista de insumos no vacía
 - Actualización automática del stock al recibir mercancía
 - Registro automático de movimientos de inventario tipo entrada por compra
+- Common Module: filtros, interceptores y pipes
 
 ---
 
-### Sprint 3 — Gestión de Menú y Frontend Base
+### Sprint 3 — Gestión de Menú y Costos
 
 > 📅 **13 de abril → 17 de abril** · 📝 **Cierre Segundo Corte: 17 de abril** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4)
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/6) |
-| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) |
-| HU-12 | Estructura de Navegación y Layout Base | `user-story` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/12)|
+| HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | [#6](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/6) |
+| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` | [#7](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) |
 
 **Entregables:**
 
@@ -214,29 +217,24 @@ Insumo               1 ──── N  MovimientoInventario
 - Asociación de ingredientes con cantidades requeridas
 - Validación para evitar ingredientes repetidos en una receta
 - Cálculo dinámico del costo estimado de cada receta
-- Layout base del sistema con navegación responsive
-- Vistas CRUD conectadas mediante routing en Next.js
 
 ---
 
-### Sprint 4 — Control, Trazabilidad y Dashboard
+### Sprint 4 — Control y Trazabilidad
 
 > 📅 **20 de abril → 8 de mayo** · 🚫 **Festivo: 1 de mayo (Día del Trabajo)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5)
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-08 | Alertas de Stock Mínimo | `user-story` `backend` `frontend` |  (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/8) |
-| HU-09 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/9) |
-| HU-10 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/10)|
-| HU-13 | Dashboard Principal y Panel de Alertas | `user-story` `frontend` `dashboard` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/13) |
+| HU-08 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | [#8](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/8) |
+| HU-09 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | [#9](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/9) |
 
 **Entregables:**
 
-- Alertas visuales para stock crítico
-- Filtro de insumos en estado crítico
 - Consulta de movimientos por rango de fechas e insumo
+- Tabla de movimientos con filtros
 - Registro manual de salidas por merma o ajuste
-- Dashboard principal con resumen visual del inventario
+- Actualización automática del stock tras ajustes
 
 ---
 
@@ -246,8 +244,8 @@ Insumo               1 ──── N  MovimientoInventario
 
 | # | Historia de Usuario | Etiquetas | Asunto |
 |---|---|---|---|
-| HU-11 | Reportes de Consumo y Gastos | `user-story` `backend` `frontend` `reporte` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/11) |
-| HU-14 | Autenticación de Usuarios y Control de Acceso | `user-story` `backend` `frontend` `security` | (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/14) |
+| HU-10 | Reportes de Consumo y Gastos | `user-story` `backend` `frontend` `reporte` | [#10](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/10) |
+| HU-11 | Autenticación de Usuarios y Control de Acceso | `user-story` `backend` `frontend` `security` | [#11](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/11) |
 
 **Entregables:**
 
@@ -257,7 +255,7 @@ Insumo               1 ──── N  MovimientoInventario
 - Gestión de roles y control de acceso
 - Persistencia de sesión
 - Validación final del sistema con Docker Compose y pruebas de cierre
-  
+
 ---
 
 ## 📅 Cronograma
