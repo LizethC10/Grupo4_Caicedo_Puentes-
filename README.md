@@ -39,7 +39,7 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 | :--- | :--- |
 | **Tipo** | Intermedio — Control de insumos y pedidos |
 | **Entidades** | 8 entidades con relaciones (ver modelo de datos) |
-| **Historias de Usuario** | 12 HUs organizadas en 5 sprints |
+| **Historias de Usuario** | 10 HUs organizadas en 5 sprints |
 | **Entregas** | 2 lanzamientos alineados con los cortes académicos |
 | **Casos de Uso** | 10 CUs (CRUD, compras, stock, recetas, reportes) |
 
