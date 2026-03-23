@@ -261,7 +261,8 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 ## 📅 Cronograma
 
 
-```
+
+```text
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │                    SEGUNDO CORTE (Release 1) — Cierre: 17 Abr 2026           │
 │                         Backend + Frontend Base                              │
@@ -275,8 +276,8 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 │ • Insumos           │ • Filters/Pipes     │ • Mermas y ajustes               │
 │ • Proveedores       │                     │ • Reportes básicos               │
 │                     │                     │ • Frontend: listados y forms     │
-│                     │ 🚫 Abr 2-3          │                                  │
-│ 🚫 Mar 23           │   (Semana Santa)    │                                  │
+│                     │ 🚫 Abr 2-3          │                                 │
+│ 🚫 Mar 23           │   (Semana Santa)    │                                 │
 │   (San José)        │                     │                                  │
 ├─────────────────────┴─────────────────────┴──────────────────────────────────┤
 │                    TERCER CORTE (Release 2) — Cierre: 22 May 2026            │
@@ -291,9 +292,10 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 │ • Integración frontend-backend     │ • Docker compose validación final       │
 │ • Navegación final                 │ • Preparación de sustentación           │
 │                                    │                                         │
-│ 🚫 May 1                           │ 🚫 May 18                              │
+│ 🚫 May 1                          │ 🚫 May 18                               │
 │   (Día del Trabajo)                │   (Día de la Ascensión)                 │
 └────────────────────────────────────┴─────────────────────────────────────────┘
+
 ```
 
 ### Festivos Colombianos (Marzo — Mayo 2026)
