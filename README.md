@@ -372,9 +372,9 @@ cp .env.example .env
 
 ```env
 # .env.example
-DB_USER=admin
-DB_PASSWORD=admin123
-DB_NAME=gestion_academica_db
+DB_USER=
+DB_PASSWORD=
+DB_NAME= Sistema_de_Inventario_para_Restaurante
 ```
 
 ### Levantar los servicios
