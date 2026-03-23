@@ -359,8 +359,8 @@ El tablero incluye:
 ### Clonar el repositorio
 
 ```bash
-git clone (https://github.com/LizethC10/Grupo4_Caicedo_Puentes-.git)
-cd  LizethC10/Grupo4_Caicedo_Puentes-
+git clone https://github.com/LizethC10/Grupo4_Caicedo_Puentes-.git
+cd  Grupo4_Caicedo_Puentes-
 ```
 
 ### Configurar variables de entorno
