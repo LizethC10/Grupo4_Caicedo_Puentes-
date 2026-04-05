@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:16-alpine
-    container_name: gestion_restaurante_db
+    container_name: inventario_restaurante_db
     restart: unless-stopped
     env_file:
       - .env
@@ -23,7 +23,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: gestion_restaurante-backend
+    container_name: inventario_restaurante_backend
     restart: unless-stopped
     env_file:
       - .env
@@ -43,7 +43,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: gestion_restaurante_frontend
+    container_name: inventario_restaurante_frontend
     restart: unless-stopped
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:3001

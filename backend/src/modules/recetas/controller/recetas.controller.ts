@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { RecetaService } from '../service/recetas.service';
+import { RecetaService } from '../service/receta.service';
 import { CreateRecetaDto } from '../dto/create-receta.dto';
 import { UpdateRecetaDto } from '../dto/update-receta.dto';
 

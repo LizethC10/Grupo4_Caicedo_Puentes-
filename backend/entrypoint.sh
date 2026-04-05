@@ -4,8 +4,8 @@ set -e
 echo "⏳ Ejecutando migraciones de Prisma..."
 npx prisma migrate deploy
 
-echo "🚀 Iniciando backend NestJS..."
-exec node dist/main
+echo "🚀 Compilando backend NestJS..."
+npm run build
 
-echo "✅ Schema sincronizado. Iniciando backend..."
-exec npm run start:dev
+echo "✅ Iniciando backend..."
+exec node dist/main
