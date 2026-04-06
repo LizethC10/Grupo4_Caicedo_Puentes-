@@ -1,3 +1,4 @@
+//Gestión de Proveedores    H-U 2
 export interface Proveedor {
   id: number;
   razonSocial: string;

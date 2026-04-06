@@ -1,3 +1,4 @@
+// Registro de Insumos H-U 1
 export interface Insumo {
   id: number;
   nombre: string;
