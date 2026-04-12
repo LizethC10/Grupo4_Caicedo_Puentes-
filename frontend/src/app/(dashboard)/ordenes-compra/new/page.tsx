@@ -27,10 +27,6 @@ export default function NuevaOrdenCompraPage() {
       setError('Debe seleccionar un proveedor');
       return;
     }
-    if (!form.fechaEmision) {
-      setError('La fecha de emisión es obligatoria');
-      return;
-    }
     setLoading(true);
     setError(null);
     try {
