@@ -13,6 +13,7 @@ const navItems = [
   { href: '/recetas',                label: 'Recetas' },
   { href: '/receta-ingrediente',     label: 'Ingredientes' },
   { href: '/movimientos-inventario', label: 'Movimientos' },
+  { href: '/reportes',               label: 'Reportes' },
 ];
 
 export default function Sidebar() {
