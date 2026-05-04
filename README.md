@@ -80,6 +80,8 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 | Sprint 4 — Seguridad e integración | ✅ **Completado** | HU-11 | Abr 20 → May 8 |
 | Sprint 5 — Cierre, pruebas y despliegue | ✅ **Completado** | Validación y consolidación | May 11 → May 22 |
 
+---
+
 ### Hitos Completados ✅
 
 #### Backend (NestJS + Prisma + PostgreSQL)
@@ -118,7 +120,7 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 - [x] Página de Reportes con rotación de insumos y gastos por proveedor
 - [x] Alertas de stock bajo
 - [x] Manejo de estados: loading, error, formularios con validación
-
+---
 #### Infraestructura
 - [x] Dockerfiles para backend y frontend
 - [x] CORS configurado para múltiples orígenes
@@ -174,7 +176,7 @@ Insumo               1 ──── N  RecetaIngrediente
 Insumo               1 ──── N  MovimientoInventario
 
 ```
-
+---
 
 ### Entidades
 
@@ -190,7 +192,7 @@ Insumo               1 ──── N  MovimientoInventario
 | **MovimientoInventario** | id, insumoId, tipo (ENTRADA/SALIDA), cantidad, fecha, motivo |
 | **Usuario** | id, nombre, email (unique), password (hashed), rol |
 
----
+## 🚀 Plan de Lanzamientos
 
 ### Release 1 — Segundo Corte: Base Backend + Frontend
 > 📅 Cierre: 17 de Abril de 2026 · Sprints 1, 2 y 3
@@ -203,6 +205,7 @@ Entregar la API REST con arquitectura en capas y el frontend base con los módul
 | [Sprint 1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2) | 16 Mar → 29 Mar | HU-01, HU-02, HU-03 | Docker, Prisma, Categorías, Insumos, Proveedores |
 | [Sprint 2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3) | 30 Mar → 10 Abr | HU-04, HU-05 | Órdenes de Compra, Recepción de mercancía, Common Module |
 | [Sprint 3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4) | 13 Abr → 17 Abr | HU-06, HU-07 | Recetas y costos |
+
 ### Release 2 — Tercer Corte: Integración, Control y Seguridad
 > 📅 Cierre: 22 de Mayo de 2026 · Sprints 4 y 5
 
@@ -218,101 +221,102 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 ## 📌 Sprints e Historias de Usuario
 
-### Sprint 1 — Gestión de Catálogos e Insumos
+### Sprint 1 — Gestión de Catálogos e Insumos ✅
 
 > 📅 **16 de marzo → 29 de marzo** · 🚫 **Festivo: 23 de marzo (San José)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2)
 
-| # | Historia de Usuario | Etiquetas | Asunto |
-|---|---|---|---|
-| HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | [#1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/1) |
-| HU-02 | Gestión de Proveedores | `user-story` `backend` `frontend` | [#2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/2) |
-| HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | [#3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/3) |
+| # | Historia de Usuario | Etiquetas | Asunto | Estado |
+|---|---|---|---|---|
+| HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | [#1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/1) | ✅ **Done** |
+| HU-02 | Gestión de Proveedores | `user-story` `backend` `frontend` | [#2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/2) | ✅ **Done** |
+| HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | [#3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/3) | ✅ **Done** |
 
 **Entregables:**
 
-- Docker Compose con PostgreSQL, NestJS y Next.js
-- Prisma schema con entidades `Categoria`, `Insumo` y `Proveedor`
-- Migraciones ejecutadas
-- CRUD completo (Controller → Service → Repository) para categorías, insumos y proveedores
-- Frontend: listados y formularios básicos
+- ✅ Docker Compose con PostgreSQL, NestJS y Next.js
+- ✅ Prisma schema con entidades `Categoria`, `Insumo` y `Proveedor`
+- ✅ Migraciones ejecutadas
+- ✅ CRUD completo (Controller → Service → Repository) para categorías, insumos y proveedores
+- ✅ Frontend: listados y formularios básicos
 
 ---
 
-### Sprint 2 — Compras y Abastecimiento
+### Sprint 2 — Compras y Abastecimiento ✅
 
 > 📅 **30 de marzo → 10 de abril** · 🚫 **Festivos: 2 y 3 de abril (Semana Santa)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3)
 
-| # | Historia de Usuario | Etiquetas | Asunto |
-|---|---|---|---|
-| HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | [#4](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/4) |
-| HU-05 | Recepción de Mercancía | `user-story` `backend` | [#5](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) |
+| # | Historia de Usuario | Etiquetas | Asunto | Estado |
+|---|---|---|---|---|
+| HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | [#4](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/4) | ✅ **Done** |
+| HU-05 | Recepción de Mercancía | `user-story` `backend` | [#5](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) | ✅ **Done** |
 
 **Entregables:**
 
-- CRUD de órdenes de compra y detalle de órdenes
-- Asociación de un proveedor con múltiples insumos
-- Validación de cantidades y lista de insumos no vacía
-- Actualización automática del stock al recibir mercancía
-- Registro automático de movimientos de inventario tipo entrada por compra
-- Common Module: filtros, interceptores y pipes
+- ✅ CRUD de órdenes de compra y detalle de órdenes
+- ✅ Asociación de un proveedor con múltiples insumos
+- ✅ Validación de cantidades y lista de insumos no vacía
+- ✅ Actualización automática del stock al recibir mercancía
+- ✅ Registro automático de movimientos de inventario tipo entrada por compra
+- ✅ Common Module: filtros, interceptores y pipes
 
 ---
 
-### Sprint 3 — Gestión de Menú y Costos
+### Sprint 3 — Gestión de Menú y Costos ✅
 
 > 📅 **13 de abril → 17 de abril** · 📝 **Cierre Segundo Corte: 17 de abril** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4)
 
-| # | Historia de Usuario | Etiquetas | Asunto |
-|---|---|---|---|
-| HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | [#6](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/6) |
-| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` | [#7](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) |
+| # | Historia de Usuario | Etiquetas | Asunto | Estado |
+|---|---|---|---|---|
+| HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | [#6](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/6) | ✅ **Done** |
+| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` | [#7](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) | ✅ **Done** |
 
 **Entregables:**
 
-- CRUD de recetas
-- Asociación de ingredientes con cantidades requeridas
-- Validación para evitar ingredientes repetidos en una receta
-- Cálculo dinámico del costo estimado de cada receta
+- ✅ CRUD de recetas
+- ✅ Asociación de ingredientes con cantidades requeridas
+- ✅ Validación para evitar ingredientes repetidos en una receta
+- ✅ Cálculo dinámico del costo estimado de cada receta
 
 ---
 
-### Sprint 4 — Control y Trazabilidad
+### Sprint 4 — Control y Trazabilidad ✅
 
 > 📅 **20 de abril → 8 de mayo** · 🚫 **Festivo: 1 de mayo (Día del Trabajo)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5)
 
-| # | Historia de Usuario | Etiquetas | Asunto |
-|---|---|---|---|
-| HU-08 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | [#8](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/8) |
-| HU-09 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | [#9](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/9) |
+| # | Historia de Usuario | Etiquetas | Asunto | Estado |
+|---|---|---|---|---|
+| HU-08 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | [#8](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/8) | ✅ **Done** |
+| HU-09 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | [#9](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/9) | ✅ **Done** |
 
 **Entregables:**
 
-- Consulta de movimientos por rango de fechas e insumo
-- Tabla de movimientos con filtros
-- Registro manual de salidas por merma o ajuste
-- Actualización automática del stock tras ajustes
+- ✅ Consulta de movimientos por rango de fechas e insumo
+- ✅ Tabla de movimientos con filtros
+- ✅ Registro manual de salidas por merma o ajuste
+- ✅ Actualización automática del stock tras ajustes
 
 ---
 
-### Sprint 5 — Reportes, Seguridad y Cierre
+### Sprint 5 — Reportes, Seguridad y Cierre ✅
 
 > 📅 **11 de mayo → 22 de mayo** · 🚫 **Festivo: 18 de mayo (Día de la Ascensión)** · 📝 **Cierre Tercer Corte: 22 de mayo** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/6)
 
-| # | Historia de Usuario | Etiquetas | Asunto |
-|---|---|---|---|
-| HU-10 | Reportes de Consumo y Gastos | `user-story` `backend` `frontend` `reporte` | [#10](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/10) |
-| HU-11 | Autenticación de Usuarios y Control de Acceso | `user-story` `backend` `frontend` `security` | [#11](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/11) |
+| # | Historia de Usuario | Etiquetas | Asunto | Estado |
+|---|---|---|---|---|
+| HU-10 | Reportes de Consumo y Gastos | `user-story` `backend` `frontend` `reporte` | [#10](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/10) | ✅ **Done** |
+| HU-11 | Autenticación de Usuarios y Control de Acceso | `user-story` `backend` `frontend` `security` | [#11](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/11) | ✅ **Done** |
 
 **Entregables:**
 
-- Reporte de insumos de mayor rotación
-- Reporte de gastos por proveedor
-- Inicio de sesión seguro con validación de credenciales
-- Gestión de roles y control de acceso
-- Persistencia de sesión
-- Validación final del sistema con Docker Compose y pruebas de cierre
+- ✅ Reporte de insumos de mayor rotación
+- ✅ Reporte de gastos por proveedor
+- ✅ Inicio de sesión seguro con validación de credenciales
+- ✅ Gestión de roles y control de acceso
+- ✅ Persistencia de sesión
+- ✅ Validación final del sistema con Docker Compose y pruebas de cierre
 
 ---
+
 
 ## 📅 Cronograma
 
