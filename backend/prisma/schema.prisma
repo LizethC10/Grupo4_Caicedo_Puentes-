@@ -128,3 +128,14 @@ model MovimientoInventario {
 
   @@map("movimientos-inventario")
 }
+
+model Usuario {
+  id         Int      @id @default(autoincrement())
+  nombre     String
+  email      String   @unique
+  password   String
+  rol        String   @default("CHEF") // ADMINISTRADOR | CHEF | BODEGA
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  @@map("usuarios")
+}

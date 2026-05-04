@@ -8,6 +8,7 @@ import { DetalleOrdenModule } from './modules/detalle-orden/detalle-orden.module
 import { RecetasModule } from './modules/recetas/recetas.module';
 import { RecetaIngredienteModule } from './modules/receta-ingrediente/receta-ingrediente.module';
 import { MovimientosInventarioModule } from './modules/movimientos-inventario/movimiento-inventario.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { MovimientosInventarioModule } from './modules/movimientos-inventario/mo
     RecetasModule,
     RecetaIngredienteModule,
     MovimientosInventarioModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
