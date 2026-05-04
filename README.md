@@ -36,12 +36,11 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 ### Alcance
 
 | Aspecto | Detalle |
-| :--- | :--- |
-| **Tipo** | Intermedio — Control de insumos y pedidos |
-| **Entidades** | 8 entidades con relaciones (ver modelo de datos) |
-| **Historias de Usuario** | 10 HUs organizadas en 5 sprints |
-| **Entregas** | 2 lanzamientos alineados con los cortes académicos |
-| **Casos de Uso** | 10 CUs (CRUD, compras, stock, recetas, reportes) |
+|---|---|
+| **Tipo** | Proyecto demostrativo — Guiado por el Docente |
+| **Entidades** | 9 entidades con relaciones (incluyendo Usuario para autenticación) |
+| **Historias de Usuario** | 11 HUs organizadas en 5 sprints |
+| **Releases** | 2 releases alineados con los cortes académicos |
 
 ### Funcionalidades Principales
 
@@ -67,6 +66,65 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 | **Validación** | class-validator + class-transformer | DTOs y validación de entrada |
 
 ---
+## 🎯 Estado Actual del Proyecto
+
+> **Última actualización:** 4 de Mayo de 2026 — Proyecto 100% completado
+
+### Progreso por Sprint
+
+| Sprint | Estado | HUs | Período |
+|---|---|---|---|
+| Sprint 1 — Infraestructura y entidades base | ✅ **Completado** | HU-01, HU-02, HU-03 | Mar 16 → Mar 29 |
+| Sprint 2 — Compras y Abastecimiento | ✅ **Completado** | HU-04, HU-05 | Mar 30 → Abr 10 |
+| Sprint 3 — Gestión de menú, costos y frontend | ✅ **Completado** | HU-06, HU-07, HU-08, HU-09, HU-10 | Abr 13 → Abr 17 |
+| Sprint 4 — Seguridad e integración | ✅ **Completado** | HU-11 | Abr 20 → May 8 |
+| Sprint 5 — Cierre, pruebas y despliegue | ✅ **Completado** | Validación y consolidación | May 11 → May 22 |
+
+### Hitos Completados ✅
+
+#### Backend (NestJS + Prisma + PostgreSQL)
+- [x] Docker Compose con 3 servicios: PostgreSQL, NestJS, Next.js
+- [x] Prisma schema con 9 entidades y todas sus relaciones
+- [x] Migraciones aplicadas
+- [x] Módulo `categorias` — CRUD completo (Controller → Service → Repository)
+- [x] Módulo `insumos` — CRUD con validación de stock negativo y nombre único
+- [x] Módulo `proveedores` — CRUD con validación de contacto obligatorio
+- [x] Módulo `ordenes-compra` — CRUD con máquina de estados
+- [x] Módulo `detalle-orden` — CRUD con restricción de unicidad compuesta
+- [x] Módulo `recetas` — CRUD completo
+- [x] Módulo `receta-ingrediente` — CRUD con restricción compuesta
+- [x] Módulo `movimientos-inventario` — CRUD con filtros
+- [x] Módulo `auth` — Login, Register, JWT, roles
+- [x] Recepción de mercancía con `$transaction` (atomicidad)
+- [x] Common Module: `HttpExceptionFilter`, `ResponseInterceptor`
+- [x] Configuración global: `ValidationPipe`, prefix `api/v1`, CORS multi-origen
+- [x] Bcryptjs para hash de contraseñas
+- [x] JWT Strategy con guards
+
+#### Frontend (Next.js 15 + React 19 + TypeScript + Tailwind CSS)
+- [x] Estructura Next.js 15 con App Router
+- [x] Cliente HTTP centralizado (`lib/api.ts`)
+- [x] 9 interfaces TypeScript para todas las entidades
+- [x] 9 servicios de acceso a la API
+- [x] Layout raíz + Dashboard layout con grupo de rutas `(dashboard)`
+- [x] Página de Login con autenticación JWT
+- [x] Protección de rutas con verificación de token
+- [x] Sidebar con información del usuario y botón de cerrar sesión
+- [x] CRUD completo: Categorías, Insumos, Proveedores
+- [x] CRUD completo: Órdenes de Compra, Detalle Orden
+- [x] CRUD completo: Recetas con ingredientes y cálculo automático de costos
+- [x] Movimientos de Inventario con filtros (insumo, tipo, rango de fechas)
+- [x] Registro manual de Mermas y Ajustes
+- [x] Página de Reportes con rotación de insumos y gastos por proveedor
+- [x] Alertas de stock bajo
+- [x] Manejo de estados: loading, error, formularios con validación
+
+#### Infraestructura
+- [x] Dockerfiles para backend y frontend
+- [x] CORS configurado para múltiples orígenes
+- [x] Frontend disponible en local (3000) y Docker (3005)
+- [x] Variables de entorno configuradas
+
 
 ## 🏗 Arquitectura
 
@@ -118,22 +176,21 @@ Insumo               1 ──── N  MovimientoInventario
 ```
 
 
- ### Entidades
+### Entidades
 
 | Entidad | Campos Principales |
-| :--- | :--- |
-| **Categoría** | id, nombre (unique), descripcion |
-| **Insumo** | id, nombre (unique), unidadMedida, precioActual, stockActual, stockMinimo, categoriaId (FK) |
+|---|---|
+| **Categoria** | id, nombre (unique), descripcion |
+| **Insumo** | id, nombre (unique), unidadMedida, precioActual, stockActual, stockMinimo, categoriaId |
 | **Proveedor** | id, razonSocial, nit (unique), telefono, email, tiempoEntregaDias |
-| **OrdenCompra** | id, proveedorId (FK), fechaEmision, estado (Pendiente/Recibida/Cancelada), total |
-| **DetalleOrden** | id, ordenCompraId (FK), insumoId (FK), cantidad, precioUnitario (unique compound: orden-insumo) |
+| **OrdenCompra** | id, proveedorId, fechaEmision, estado, total |
+| **DetalleOrden** | id, ordenCompraId, insumoId, cantidad, precioUnitario (unique compound) |
 | **Receta** | id, nombre (unique), descripcion, porciones |
-| **RecetaIngrediente** | id, recetaId (FK), insumoId (FK), cantidadRequerida (unique compound: receta-insumo) |
-| **MovimientoInventario** | id, insumoId (FK), tipo (ENTRADA/SALIDA), cantidad, fecha, motivo |
+| **RecetaIngrediente** | id, recetaId, insumoId, cantidadRequerida (unique compound) |
+| **MovimientoInventario** | id, insumoId, tipo (ENTRADA/SALIDA), cantidad, fecha, motivo |
+| **Usuario** | id, nombre, email (unique), password (hashed), rol |
 
 ---
-
-## 🚀 Plan de Lanzamientos
 
 ### Release 1 — Segundo Corte: Base Backend + Frontend
 > 📅 Cierre: 17 de Abril de 2026 · Sprints 1, 2 y 3
@@ -146,7 +203,6 @@ Entregar la API REST con arquitectura en capas y el frontend base con los módul
 | [Sprint 1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2) | 16 Mar → 29 Mar | HU-01, HU-02, HU-03 | Docker, Prisma, Categorías, Insumos, Proveedores |
 | [Sprint 2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3) | 30 Mar → 10 Abr | HU-04, HU-05 | Órdenes de Compra, Recepción de mercancía, Common Module |
 | [Sprint 3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4) | 13 Abr → 17 Abr | HU-06, HU-07 | Recetas y costos |
-
 ### Release 2 — Tercer Corte: Integración, Control y Seguridad
 > 📅 Cierre: 22 de Mayo de 2026 · Sprints 4 y 5
 
