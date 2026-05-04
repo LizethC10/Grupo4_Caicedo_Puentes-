@@ -360,6 +360,8 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 ### Festivos Colombianos (Marzo — Mayo 2026)
 
+### Festivos Colombianos (Marzo — Mayo 2026)
+
 | Fecha | Festivo | Sprint Afectado |
 |---|---|---|
 | Lunes 23 de Marzo | Día de San José | Sprint 1 |
@@ -369,91 +371,126 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 | Lunes 18 de Mayo | Día de la Ascensión | Sprint 5 |
 
 ---
-## ✅ Definición de Hecho (DoD)
 
-> 📌 Referencia completa: [Issue #15 — Definition of Done](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/15)
-
-Cada Historia de Usuario se considera terminada cuando cumple todos los siguientes criterios:
+## ✅ Definition of Done (DoD)
 
 ### Backend
-- [ ] Endpoints implementados con arquitectura en capas: Controlador → Servicio → Repositorio
-- [ ] DTOs con validaciones usando class-validator y class-transformer
-- [ ] Manejo de errores con excepciones HTTP apropiadas (NotFoundException, ConflictException, BadRequestException)
-- [ ] Respuestas con formato uniforme (interceptor aplicado)
-- [ ] Endpoint probado manualmente con Postman o Thunder Client y funcionando correctamente
+- [x] Endpoints implementados con arquitectura en capas: Controller → Service → Repository
+- [x] DTOs con validaciones usando `class-validator` y `class-transformer`
+- [x] Manejo de errores con excepciones HTTP (`NotFoundException`, `ConflictException`, `BadRequestException`)
+- [x] Respuestas con formato uniforme (interceptor aplicado)
+- [x] Endpoints probados manualmente con Postman
 
 ### Frontend
-- [ ] Páginas implementadas con componentes reutilizables
-- [ ] Consumo del API a través de la capa de services/
-- [ ] Manejo de estados: carga (loading), éxito y error
-- [ ] Formularios con validación del lado del cliente
-- [ ] Diseño responsivo y navegable
+- [x] Páginas implementadas con componentes reutilizables
+- [x] Consumo del API a través de la capa de `services/`
+- [x] Manejo de estados: carga (loading), éxito y error
+- [x] Formularios con validación del lado del cliente
+- [x] Diseño responsivo y navegable
 
 ### Infraestructura y Código
-- [ ] Código versionado en GitHub con commits descriptivos
-- [ ] El servicio funciona correctamente con docker compose up
-- [ ] No hay errores de consola ni advertencias críticas
-- [ ] Las migraciones de Prisma están aplicadas y el esquema es consistente
+- [x] Código versionado en GitHub con commits descriptivos
+- [x] El servicio funciona correctamente con `docker compose up`
+- [x] No hay errores de consola ni advertencias críticas
+- [x] Las migraciones de Prisma están aplicadas
 
 ---
+
 ## 📊 Tablero Kanban
 
-El seguimiento del proyecto se realiza mediante un tablero Kanban en GitHub Projects:
+🔗 **[Ver Issues en GitHub](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues)**
 
-🔗 **[Ver Tablero Kanban]()**
+> **Última actualización:** 4 de Mayo de 2026
 
-El tablero incluye:
-- **Columnas:** Todo → In Progress → Done
-- **Campos personalizados:** Sprint, Release, Prioridad
-- **Vistas:** Board (Kanban), Table, Roadmap
+### 🟢 Done (11 HUs)
+
+| HU | Historia de Usuario | Sprint | Release | Issue |
+|---|---|---|---|---|
+| HU-01 | Registro de Insumos | Sprint 1 | R1 | [#1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/1) |
+| HU-02 | Gestión de Proveedores | Sprint 1 | R1 | [#2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/2) |
+| HU-03 | Categorización de Insumos | Sprint 1 | R1 | [#3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/3) |
+| HU-04 | Creación de Órdenes de Compra | Sprint 2 | R1 | [#4](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/4) |
+| HU-05 | Recepción de Mercancía | Sprint 2 | R1 | [#5](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) |
+| HU-06 | Configuración de Recetas (Escandallo) | Sprint 3 | R1 | [#6](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/6) |
+| HU-07 | Cálculo de Costos de Receta | Sprint 3 | R1 | [#7](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) |
+| HU-08 | Trazabilidad de Movimientos | Sprint 4 | R2 | [#8](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/8) |
+| HU-09 | Registro de Mermas y Ajustes | Sprint 4 | R2 | [#9](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/9) |
+| HU-10 | Reportes de Consumo y Gastos | Sprint 5 | R2 | [#10](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/10) |
+| HU-11 | Autenticación de Usuarios y Control de Acceso | Sprint 5 | R2 | [#11](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/11) |
+
+### 🔵 In Progress (0 HUs)
+
+_No hay historias en progreso._
+
+### ⚪ Todo / Backlog (0 HUs)
+
+_Todas las HUs completadas._
 
 ---
-
 ## ⚙ Instalación y Ejecución
-
 ### Prerrequisitos
 
 - [Docker](https://www.docker.com/products/docker-desktop/) y Docker Compose instalados
 - [Git](https://git-scm.com/downloads)
+- Node.js 22+ (para desarrollo local del frontend)
 
 ### Clonar el repositorio
 
 ```bash
 git clone https://github.com/LizethC10/Grupo4_Caicedo_Puentes-.git
-cd  Grupo4_Caicedo_Puentes-
+cd Grupo4_Caicedo_Puentes-
 ```
 
 ### Configurar variables de entorno
 
-```bash
-# Copiar el archivo de ejemplo
-cp .env.example .env
-```
-
 ```env
-# .env.example
-DB_USER=
-DB_PASSWORD=
-DB_NAME= Sistema_de_Inventario_para_Restaurante
+# .env en la raíz
+DB_USER=admin
+DB_PASSWORD=admin123
+DB_NAME=inventario_restaurante_db
+DATABASE_URL=postgresql://admin:admin123@localhost:5432/inventario_restaurante_db
+PORT=3001
+FRONTEND_URL=http://localhost:3000
+JWT_SECRET=inventario_secret_2026
 ```
 
 ### Levantar los servicios
 
 ```bash
-# Levantar todos los servicios con Docker Compose
-docker compose up
-
-# O en modo detached (segundo plano)
+# Levantar todo con Docker
 docker compose up -d
+
+# O para desarrollo: BD y backend en Docker, frontend local
+docker compose up db backend -d
+cd frontend && npm run dev
 ```
 
 ### Acceder a los servicios
 
 | Servicio | URL |
 |---|---|
-| **Frontend (Next.js)** | [http://localhost:3000](http://localhost:3000) |
-| **Backend (NestJS API)** | [http://localhost:3001](http://localhost:3001) |
+| **Frontend (local)** | [http://localhost:3000](http://localhost:3000) |
+| **Frontend (Docker)** | [http://localhost:3005](http://localhost:3005) |
+| **Backend (NestJS API)** | [http://localhost:3001/api/v1](http://localhost:3001/api/v1) |
 | **PostgreSQL** | `localhost:5432` |
+
+### Crear usuario administrador
+
+Usar Postman:
+
+```bash
+POST http://localhost:3001/api/v1/auth/register
+{
+  "nombre": "Admin Restaurante",
+  "email": "admin@restaurante.com",
+  "password": "admin123",
+  "rol": "ADMINISTRADOR"
+}
+```
+
+Luego iniciar sesión en `http://localhost:3000/login`.
+
+---
 
 ### Ejecutar migraciones de Prisma
 
@@ -467,27 +504,26 @@ npx prisma migrate dev
 # Generar el cliente Prisma
 npx prisma generate
 ```
-
 ---
 
 ## 📎 Enlaces Rápidos
 
 | Recurso | Enlace |
 |---|---|
-| 📋 Tablero Kanban | |
+| 📂 Repositorio | [GitHub](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-) |
 | 📌 Issues (todos) | [Ver Issues](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues) |
 | 🏁 Sprint 1 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2) |
 | 🏁 Sprint 2 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3) |
 | 🏁 Sprint 3 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4) |
 | 🏁 Sprint 4 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5) |
 | 🏁 Sprint 5 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/6) |
-| ✅ Definición de Hecho (DoD) | [Issue #15](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/15) |
 
 ---
 
 <p align="center">
   <strong>Programación Web — Ingeniería de Sistemas — 2026A</strong><br>
-  <em>Corporación Universitaria del Huila — CORHUILA</em>
+  <em>Corporación Universitaria del Huila — CORHUILA</em><br>
+  <strong>Lizeth Lorena Caicedo Mora · Lilly Signey Puentes Rincón</strong>
 </p>
 
 
