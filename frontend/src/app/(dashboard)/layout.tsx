@@ -1,15 +1,23 @@
-import type { Metadata } from 'next';
-import Sidebar from '@/components/layout/Sidebar';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Sistema de Inventario para Restaurante',
-};
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Sidebar from '@/components/layout/Sidebar';
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.replace('/login');
+    }
+  }, [router]);
+
   return (
     <div className="flex h-screen overflow-hidden">
       <Sidebar />

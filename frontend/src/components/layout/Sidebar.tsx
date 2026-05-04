@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 const navItems = [
   { href: '/dashboard',              label: 'Dashboard' },
@@ -18,6 +19,19 @@ const navItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [usuario, setUsuario] = useState<{ nombre?: string; rol?: string }>({});
+
+  useEffect(() => {
+    const u = localStorage.getItem('usuario');
+    if (u) setUsuario(JSON.parse(u));
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    router.replace('/login');
+  };
 
   return (
     <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
@@ -25,6 +39,12 @@ export default function Sidebar() {
         <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wider">
           Inventario Restaurante
         </h2>
+        {usuario.nombre && (
+          <div className="mt-2">
+            <p className="text-xs font-medium text-gray-900">{usuario.nombre}</p>
+            <span className="text-xs text-orange-600 font-medium">{usuario.rol}</span>
+          </div>
+        )}
       </div>
       <nav className="flex-1 px-3 py-4 space-y-1">
         {navItems.map((item) => {
@@ -45,7 +65,15 @@ export default function Sidebar() {
           );
         })}
       </nav>
-      <div className="px-6 py-4 border-t border-gray-200 text-xs text-gray-400">
+      <div className="px-3 py-4 border-t border-gray-200">
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center px-3 py-2 rounded-md text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+        >
+           Cerrar Sesión
+        </button>
+      </div>
+      <div className="px-6 py-3 border-t border-gray-200 text-xs text-gray-400">
         Programación Web — CORHUILA 2026A
       </div>
     </aside>
