@@ -11,9 +11,9 @@ async function bootstrap() {
   app.setGlobalPrefix('api/v1');
 
   app.enableCors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+   origin: ['http://localhost:3000', 'http://localhost:3005', 'http://192.168.1.34:3005'],
+   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+   allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
   app.useGlobalPipes(
