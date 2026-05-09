@@ -43,7 +43,7 @@ services:
     container_name: inventario_restaurante_frontend
     restart: unless-stopped
     environment:
-      NEXT_PUBLIC_API_URL: "http://192.168.1.34:3001"
+      NEXT_PUBLIC_API_URL: "http://backend:3001"  # ← CAMBIADO AQUÍ
     ports:
       - '3005:3000'
     depends_on:
