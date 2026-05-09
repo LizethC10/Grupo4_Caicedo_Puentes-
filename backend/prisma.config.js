@@ -1,21 +1,23 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const node_path_1 = require("node:path");
-const config_1 = require("prisma/config");
-const dotenv_1 = require("dotenv");
-(0, dotenv_1.config)({ path: node_path_1.default.join(__dirname, '..', '.env') });
-exports.default = (0, config_1.defineConfig)({
-    schema: node_path_1.default.join('prisma', 'schema.prisma'),
-    datasource: {
-        url: process.env.DATABASE_URL,
+import { join } from 'node:path';
+import { defineConfig } from 'prisma/config';
+import { config } from 'dotenv';
+
+config({ path: join(__dirname, '..', '.env') });
+
+export default defineConfig({
+  schema: join('prisma', 'schema.prisma'),
+  datasource: {
+    url: process.env.DATABASE_URL,
+  },
+  migrate: {
+    async adapter() {
+      const { PrismaPg } = await import('@prisma/adapter-pg');
+      return new PrismaPg({
+        connectionString: process.env.DATABASE_URL,
+      });
     },
-    migrate: {
-        async adapter() {
-            const { PrismaPg } = await Promise.resolve().then(() => require('@prisma/adapter-pg'));
-            return new PrismaPg({
-                connectionString: process.env.DATABASE_URL,
-            });
-        },
-    },
+  },
+  migrations: {
+    seed: 'ts-node prisma/seed.ts',
+  },
 });
-//# sourceMappingURL=prisma.config.js.map
