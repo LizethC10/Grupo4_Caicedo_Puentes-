@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { login } from '../../services/auth.service';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -19,18 +20,9 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const json = await res.json();
-      if (!res.ok) {
-        setError('Credenciales inválidas');
-        return;
-      }
-      localStorage.setItem('token', json.data.access_token);
-      localStorage.setItem('usuario', JSON.stringify(json.data.usuario));
+      const result = await login(form.email, form.password);
+      localStorage.setItem('token', result.access_token);
+      localStorage.setItem('usuario', JSON.stringify(result.usuario));
       router.push('/dashboard');
     } catch {
       setError('Credenciales inválidas');

@@ -17,6 +17,12 @@ enum TipoMovimiento {
   SALIDA
 }
 
+enum Rol {
+  ADMINISTRADOR
+  CHEF
+  BODEGA
+}
+
 model Categoria {
   id          Int      @id @default(autoincrement())
   nombre      String   @unique
@@ -134,7 +140,7 @@ model Usuario {
   nombre     String
   email      String   @unique
   password   String
-  rol        String   @default("CHEF") // ADMINISTRADOR | CHEF | BODEGA
+  rol        Rol      @default(CHEF)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   @@map("usuarios")

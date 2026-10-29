@@ -6,3 +6,4 @@ export * from './detalle-orden.service';
 export * from './recetas.service';
 export * from './receta-ingrediente.service';
 export * from './movimientos-inventario.service';
+export * from './auth.service';

@@ -30,7 +30,7 @@ async function main() {
       email: 'admin@restaurante.com',
       nombre: 'Administrador',
       password: hashedPassword,
-      rol: 'ADMIN',
+      rol: 'ADMINISTRADOR',
     },
   });
 
