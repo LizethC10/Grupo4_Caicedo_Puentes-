@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, ParseIntPipe } from '@nestjs/common';
 import { CategoriaService } from '../service/categoria.service';
 import { CreateCategoriaDto } from '../dto/create-categoria.dto';
 import { UpdateCategoriaDto } from '../dto/update-categoria.dto';
@@ -23,8 +15,8 @@ export class CategoriasController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.categoriaService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.categoriaService.findOne(id);
   }
 
   @Post()
@@ -35,13 +27,13 @@ export class CategoriasController {
 
   @Put(':id')
   @Roles(Rol.ADMINISTRADOR)
-  update(@Param('id') id: string, @Body() dto: UpdateCategoriaDto) {
-    return this.categoriaService.update(+id, dto);
+  update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateCategoriaDto) {
+    return this.categoriaService.update(id, dto);
   }
 
   @Delete(':id')
   @Roles(Rol.ADMINISTRADOR)
-  remove(@Param('id') id: string) {
-    return this.categoriaService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.categoriaService.remove(id);
   }
 }

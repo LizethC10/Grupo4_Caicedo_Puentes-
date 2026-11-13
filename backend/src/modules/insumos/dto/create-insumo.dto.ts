@@ -8,15 +8,11 @@ export class CreateInsumoDto {
   @IsString()
   unidadMedida: string;
 
-  @IsNumber()
+  @IsNumber({ maxDecimalPlaces: 2 })
   @IsPositive()
   precioActual: number;
 
-  @IsInt()
-  @Min(0)
-  stockActual: number;
-
-  @IsInt()
+  @IsNumber({ maxDecimalPlaces: 3 })
   @Min(0)
   stockMinimo: number;
 

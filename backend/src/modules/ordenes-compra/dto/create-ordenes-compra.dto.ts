@@ -16,7 +16,7 @@ export class CreateOrdenesCompraDto {
   @IsEnum(EstadoOrdenCompraDto)
   estado: EstadoOrdenCompraDto;
 
-  @IsNumber()
+  @IsNumber({ maxDecimalPlaces: 2 })
   @IsPositive()
   total: number;
 }

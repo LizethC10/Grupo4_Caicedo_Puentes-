@@ -7,7 +7,7 @@ export class CreateRecetaIngredienteDto {
   @IsInt()
   insumoId: number;
 
-  @IsNumber()
+  @IsNumber({ maxDecimalPlaces: 3 })
   @IsPositive()
   cantidadRequerida: number;
 }

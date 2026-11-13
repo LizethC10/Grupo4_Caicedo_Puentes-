@@ -59,7 +59,7 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 | Capa | Tecnología | Propósito |
 | :--- | :--- | :--- |
 | **Backend** | NestJS (Node.js + TypeScript) | API REST con arquitectura en capas |
-| **Frontend** | Next.js 14+ (React + TypeScript) | Interfaz de usuario con App Router |
+| **Frontend** | Next.js 15 (React 19 + TypeScript) | Interfaz de usuario con App Router |
 | **Base de Datos** | PostgreSQL 16 | Almacenamiento relacional |
 | **ORM** | Prisma | Modelado de datos, migraciones y consultas |
 | **Infraestructura** | Docker + Docker Compose | Orquestación de servicios |
@@ -68,7 +68,7 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 ---
 ## 🎯 Estado Actual del Proyecto
 
-> **Última actualización:** 4 de Mayo de 2026 — Proyecto 100% completado
+> **Última actualización:** 12 de noviembre de 2026 — Las historias de usuario están completadas; las mejoras de arquitectura y despliegue están en revisión.
 
 ### Progreso por Sprint
 
@@ -85,7 +85,7 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 ### Hitos Completados ✅
 
 #### Backend (NestJS + Prisma + PostgreSQL)
-- [x] Docker Compose con 3 servicios: PostgreSQL, NestJS, Next.js
+- [x] Docker Compose con PostgreSQL, NestJS, Next.js y proxy nginx
 - [x] Prisma schema con 9 entidades y todas sus relaciones
 - [x] Migraciones aplicadas
 - [x] Módulo `categorias` — CRUD completo (Controller → Service → Repository)
@@ -95,7 +95,7 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 - [x] Módulo `detalle-orden` — CRUD con restricción de unicidad compuesta
 - [x] Módulo `recetas` — CRUD completo
 - [x] Módulo `receta-ingrediente` — CRUD con restricción compuesta
-- [x] Módulo `movimientos-inventario` — CRUD con filtros
+- [x] Módulo `movimientos-inventario` — registro y consulta de movimientos inmutables
 - [x] Módulo `auth` — Login, Register, JWT, roles
 - [x] Recepción de mercancía con `$transaction` (atomicidad)
 - [x] Common Module: `HttpExceptionFilter`, `ResponseInterceptor`
@@ -124,7 +124,7 @@ El **Sistema de Inventario para Restaurante** es una aplicación web full-stack 
 #### Infraestructura
 - [x] Dockerfiles para backend y frontend
 - [x] CORS configurado para múltiples orígenes
-- [x] Frontend disponible en local (3000) y Docker (3005)
+- [x] Aplicación disponible detrás del proxy en `http://localhost`; API en `:3001` solo para acceso local
 - [x] Variables de entorno configuradas
 
 
@@ -202,9 +202,9 @@ Entregar la API REST con arquitectura en capas y el frontend base con los módul
 
 | Sprint | Período | HUs | Alcance |
 | :--- | :--- | :--- | :--- |
-| [Sprint 1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2) | 16 Mar → 29 Mar | HU-01, HU-02, HU-03 | Docker, Prisma, Categorías, Insumos, Proveedores |
-| [Sprint 2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3) | 30 Mar → 10 Abr | HU-04, HU-05 | Órdenes de Compra, Recepción de mercancía, Common Module |
-| [Sprint 3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4) | 13 Abr → 17 Abr | HU-06, HU-07 | Recetas y costos |
+| [Sprint 1](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/2) | 16 Mar → 29 Mar | HU-01, HU-02, HU-03 | Docker, Prisma, Categorías, Insumos, Proveedores |
+| [Sprint 2](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/3) | 30 Mar → 10 Abr | HU-04, HU-05 | Órdenes de Compra, Recepción de mercancía, Common Module |
+| [Sprint 3](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/4) | 13 Abr → 17 Abr | HU-06, HU-07 | Recetas y costos |
 
 ### Release 2 — Tercer Corte: Integración, Control y Seguridad
 > 📅 Cierre: 22 de Mayo de 2026 · Sprints 4 y 5
@@ -214,8 +214,8 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 | Sprint | Período | HUs | Alcance |
 | :--- | :--- | :--- | :--- |
-| [Sprint 4](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5) | 20 Abr → 08 May | HU-08, HU-09 | Movimientos y mermas |
-| [Sprint 5](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/6) | 11 May → 22 May | HU-10, HU-11 | Reportes, autenticación, roles y cierre |
+| [Sprint 4](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/5) | 20 Abr → 08 May | HU-08, HU-09 | Movimientos y mermas |
+| [Sprint 5](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/6) | 11 May → 22 May | HU-10, HU-11 | Reportes, autenticación, roles y cierre |
 
 ---
 
@@ -223,13 +223,13 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 ### Sprint 1 — Gestión de Catálogos e Insumos ✅
 
-> 📅 **16 de marzo → 29 de marzo** · 🚫 **Festivo: 23 de marzo (San José)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2)
+> 📅 **16 de marzo → 29 de marzo** · 🚫 **Festivo: 23 de marzo (San José)** · [Ver Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/2)
 
 | # | Historia de Usuario | Etiquetas | Asunto | Estado |
 |---|---|---|---|---|
-| HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | [#1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/1) | ✅ **Done** |
-| HU-02 | Gestión de Proveedores | `user-story` `backend` `frontend` | [#2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/2) | ✅ **Done** |
-| HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | [#3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/3) | ✅ **Done** |
+| HU-01 | Registro de Insumos | `user-story` `backend` `frontend` | [#1](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/1) | ✅ **Done** |
+| HU-02 | Gestión de Proveedores | `user-story` `backend` `frontend` | [#2](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/2) | ✅ **Done** |
+| HU-03 | Categorización de Insumos | `user-story` `backend` `frontend` | [#3](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/3) | ✅ **Done** |
 
 **Entregables:**
 
@@ -243,12 +243,12 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 ### Sprint 2 — Compras y Abastecimiento ✅
 
-> 📅 **30 de marzo → 10 de abril** · 🚫 **Festivos: 2 y 3 de abril (Semana Santa)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3)
+> 📅 **30 de marzo → 10 de abril** · 🚫 **Festivos: 2 y 3 de abril (Semana Santa)** · [Ver Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/3)
 
 | # | Historia de Usuario | Etiquetas | Asunto | Estado |
 |---|---|---|---|---|
-| HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | [#4](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/4) | ✅ **Done** |
-| HU-05 | Recepción de Mercancía | `user-story` `backend` | [#5](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) | ✅ **Done** |
+| HU-04 | Creación de Órdenes de Compra | `user-story` `backend` `frontend` | [#4](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/4) | ✅ **Done** |
+| HU-05 | Recepción de Mercancía | `user-story` `backend` | [#5](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/5) | ✅ **Done** |
 
 **Entregables:**
 
@@ -263,12 +263,12 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 ### Sprint 3 — Gestión de Menú y Costos ✅
 
-> 📅 **13 de abril → 17 de abril** · 📝 **Cierre Segundo Corte: 17 de abril** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4)
+> 📅 **13 de abril → 17 de abril** · 📝 **Cierre Segundo Corte: 17 de abril** · [Ver Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/4)
 
 | # | Historia de Usuario | Etiquetas | Asunto | Estado |
 |---|---|---|---|---|
-| HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | [#6](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/6) | ✅ **Done** |
-| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` | [#7](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) | ✅ **Done** |
+| HU-06 | Configuración de Recetas (Escandallo) | `user-story` `backend` `frontend` | [#6](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/6) | ✅ **Done** |
+| HU-07 | Cálculo de Costos de Receta | `user-story` `backend` `frontend` | [#7](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/7) | ✅ **Done** |
 
 **Entregables:**
 
@@ -281,12 +281,12 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 ### Sprint 4 — Control y Trazabilidad ✅
 
-> 📅 **20 de abril → 8 de mayo** · 🚫 **Festivo: 1 de mayo (Día del Trabajo)** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5)
+> 📅 **20 de abril → 8 de mayo** · 🚫 **Festivo: 1 de mayo (Día del Trabajo)** · [Ver Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/5)
 
 | # | Historia de Usuario | Etiquetas | Asunto | Estado |
 |---|---|---|---|---|
-| HU-08 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | [#8](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/8) | ✅ **Done** |
-| HU-09 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | [#9](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/9) | ✅ **Done** |
+| HU-08 | Trazabilidad de Movimientos | `user-story` `backend` `frontend` | [#8](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/8) | ✅ **Done** |
+| HU-09 | Registro de Mermas y Ajustes | `user-story` `backend` `frontend` | [#9](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/9) | ✅ **Done** |
 
 **Entregables:**
 
@@ -299,12 +299,12 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 ### Sprint 5 — Reportes, Seguridad y Cierre ✅
 
-> 📅 **11 de mayo → 22 de mayo** · 🚫 **Festivo: 18 de mayo (Día de la Ascensión)** · 📝 **Cierre Tercer Corte: 22 de mayo** · [Ver Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/6)
+> 📅 **11 de mayo → 22 de mayo** · 🚫 **Festivo: 18 de mayo (Día de la Ascensión)** · 📝 **Cierre Tercer Corte: 22 de mayo** · [Ver Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/6)
 
 | # | Historia de Usuario | Etiquetas | Asunto | Estado |
 |---|---|---|---|---|
-| HU-10 | Reportes de Consumo y Gastos | `user-story` `backend` `frontend` `reporte` | [#10](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/10) | ✅ **Done** |
-| HU-11 | Autenticación de Usuarios y Control de Acceso | `user-story` `backend` `frontend` `security` | [#11](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/11) | ✅ **Done** |
+| HU-10 | Reportes de Consumo y Gastos | `user-story` `backend` `frontend` `reporte` | [#10](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/10) | ✅ **Done** |
+| HU-11 | Autenticación de Usuarios y Control de Acceso | `user-story` `backend` `frontend` `security` | [#11](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/11) | ✅ **Done** |
 
 **Entregables:**
 
@@ -398,7 +398,7 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 ## 📊 Tablero Kanban
 
-🔗 **[Ver Issues en GitHub](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues)**
+🔗 **[Ver Issues en GitHub](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues)**
 
 > **Última actualización:** 4 de Mayo de 2026
 
@@ -406,17 +406,17 @@ Completar la integración frontend ↔ backend, trazabilidad de movimientos, con
 
 | HU | Historia de Usuario | Sprint | Release | Issue |
 |---|---|---|---|---|
-| HU-01 | Registro de Insumos | Sprint 1 | R1 | [#1](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/1) |
-| HU-02 | Gestión de Proveedores | Sprint 1 | R1 | [#2](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/2) |
-| HU-03 | Categorización de Insumos | Sprint 1 | R1 | [#3](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/3) |
-| HU-04 | Creación de Órdenes de Compra | Sprint 2 | R1 | [#4](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/4) |
-| HU-05 | Recepción de Mercancía | Sprint 2 | R1 | [#5](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/5) |
-| HU-06 | Configuración de Recetas (Escandallo) | Sprint 3 | R1 | [#6](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/6) |
-| HU-07 | Cálculo de Costos de Receta | Sprint 3 | R1 | [#7](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/7) |
-| HU-08 | Trazabilidad de Movimientos | Sprint 4 | R2 | [#8](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/8) |
-| HU-09 | Registro de Mermas y Ajustes | Sprint 4 | R2 | [#9](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/9) |
-| HU-10 | Reportes de Consumo y Gastos | Sprint 5 | R2 | [#10](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/10) |
-| HU-11 | Autenticación de Usuarios y Control de Acceso | Sprint 5 | R2 | [#11](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues/11) |
+| HU-01 | Registro de Insumos | Sprint 1 | R1 | [#1](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/1) |
+| HU-02 | Gestión de Proveedores | Sprint 1 | R1 | [#2](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/2) |
+| HU-03 | Categorización de Insumos | Sprint 1 | R1 | [#3](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/3) |
+| HU-04 | Creación de Órdenes de Compra | Sprint 2 | R1 | [#4](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/4) |
+| HU-05 | Recepción de Mercancía | Sprint 2 | R1 | [#5](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/5) |
+| HU-06 | Configuración de Recetas (Escandallo) | Sprint 3 | R1 | [#6](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/6) |
+| HU-07 | Cálculo de Costos de Receta | Sprint 3 | R1 | [#7](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/7) |
+| HU-08 | Trazabilidad de Movimientos | Sprint 4 | R2 | [#8](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/8) |
+| HU-09 | Registro de Mermas y Ajustes | Sprint 4 | R2 | [#9](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/9) |
+| HU-10 | Reportes de Consumo y Gastos | Sprint 5 | R2 | [#10](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/10) |
+| HU-11 | Autenticación de Usuarios y Control de Acceso | Sprint 5 | R2 | [#11](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues/11) |
 
 ### 🔵 In Progress (0 HUs)
 
@@ -437,86 +437,74 @@ _Todas las HUs completadas._
 ### Clonar el repositorio
 
 ```bash
-git clone https://github.com/LizethC10/Grupo4_Caicedo_Puentes-.git
-cd Grupo4_Caicedo_Puentes-
+git clone https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante.git
+cd Sistema-de-Inventario-para-Restaurante
 ```
 
 ### Configurar variables de entorno
 
-```env
-# .env en la raíz
-DB_USER=admin
-DB_PASSWORD=admin123
-DB_NAME=inventario_restaurante_db
-DATABASE_URL=postgresql://admin:admin123@localhost:5432/inventario_restaurante_db
-PORT=3001
-FRONTEND_URL=http://localhost:3000
-JWT_SECRET=inventario_secret_2026
+```bash
+cp .env.example .env
 ```
+
+Edita `.env` y configura valores propios para `DB_USER`, `DB_PASSWORD`, `JWT_SECRET` (mínimo 32 caracteres), `CORS_ORIGIN`, `SEED_ADMIN_EMAIL` y `SEED_ADMIN_PASSWORD`. No publiques el archivo `.env`.
 
 ### Levantar los servicios
 
 ```bash
-# Levantar todo con Docker
-docker compose up -d
+# Levantar el entorno local detrás del proxy
+docker compose up --build -d
 
 # O para desarrollo: BD y backend en Docker, frontend local
 docker compose up db backend -d
-cd frontend && npm run dev
+cd frontend
+$env:NEXT_PUBLIC_API_URL="http://localhost:3001"
+npm run dev
 ```
 
 ### Acceder a los servicios
 
 | Servicio | URL |
 |---|---|
-| **Frontend (local)** | [http://localhost:3000](http://localhost:3000) |
-| **Frontend (Docker)** | [http://localhost:3005](http://localhost:3005) |
-| **Backend (NestJS API)** | [http://localhost:3001/api/v1](http://localhost:3001/api/v1) |
-| **PostgreSQL** | `localhost:5432` |
+| **Aplicación** | [http://localhost](http://localhost) |
+| **Backend (NestJS API)** | [http://localhost/api/v1](http://localhost/api/v1) |
+| **Salud** | [http://localhost/api/v1/health](http://localhost/api/v1/health) |
 
 ### Crear usuario administrador
 
-Usar Postman:
-
-```bash
-POST http://localhost:3001/api/v1/auth/register
-{
-  "nombre": "Admin Restaurante",
-  "email": "admin@restaurante.com",
-  "password": "admin123",
-  "rol": "ADMINISTRADOR"
-}
-```
-
-Luego iniciar sesión en `http://localhost:3000/login`.
+El backend crea el administrador desde `SEED_ADMIN_EMAIL` y `SEED_ADMIN_PASSWORD` al iniciar. Luego inicia sesión en `http://localhost/login` con las credenciales configuradas.
 
 ---
 
 ### Ejecutar migraciones de Prisma
 
 ```bash
-# Entrar al contenedor del backend
-docker compose exec backend sh
-
-# Ejecutar migraciones
-npx prisma migrate dev
-
-# Generar el cliente Prisma
-npx prisma generate
+# Las migraciones versionadas se aplican al iniciar el backend.
+# Para crear una migración nueva durante desarrollo:
+cd backend
+npx prisma migrate dev --name nombre_del_cambio
 ```
 ---
+
+## Despliegue
+
+El despliegue de producción usa [compose.prod.yml](compose.prod.yml) y el proxy definido en `deploy/nginx.conf`. La instancia EC2 debe tener Docker Compose y 1 GB de swap. Antes del primer despliegue, crea `/opt/sistema-inventario` y deja esa carpeta a nombre de `ec2-user`; configura allí un archivo `.env` privado con las variables de producción. Expón solo los puertos 22 y 80 en el Security Group; la base de datos no publica 5432.
+
+Configura los secretos `EC2_HOST` y `EC2_SSH_KEY` y el environment `produccion` en GitHub. El usuario remoto esperado por el workflow es `ec2-user`. Publica las imágenes de GHCR para que la instancia pueda descargarlas, o configura allí credenciales con permiso de lectura.
+
+Las imágenes se etiquetan con el SHA del commit. El workflow ejecuta lint, pruebas, builds, análisis Trivy y despliega a la EC2; al final exige que `/api/v1/health` devuelva ese mismo SHA.
 
 ## 📎 Enlaces Rápidos
 
 | Recurso | Enlace |
 |---|---|
-| 📂 Repositorio | [GitHub](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-) |
-| 📌 Issues (todos) | [Ver Issues](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/issues) |
-| 🏁 Sprint 1 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/2) |
-| 🏁 Sprint 2 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/3) |
-| 🏁 Sprint 3 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/4) |
-| 🏁 Sprint 4 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/5) |
-| 🏁 Sprint 5 | [Milestone](https://github.com/LizethC10/Grupo4_Caicedo_Puentes-/milestone/6) |
+| 📂 Repositorio | [GitHub](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante) |
+| 📌 Issues (todos) | [Ver Issues](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/issues) |
+| 🏁 Sprint 1 | [Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/2) |
+| 🏁 Sprint 2 | [Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/3) |
+| 🏁 Sprint 3 | [Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/4) |
+| 🏁 Sprint 4 | [Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/5) |
+| 🏁 Sprint 5 | [Milestone](https://github.com/LillyPuentes-2003/Sistema-de-Inventario-para-Restaurante/milestone/6) |
 
 ---
 

@@ -38,9 +38,9 @@ model Insumo {
   id                    Int                    @id @default(autoincrement())
   nombre                String                 @unique
   unidadMedida          String
-  precioActual          Float
-  stockActual           Int
-  stockMinimo           Int
+  precioActual          Decimal                @db.Decimal(12, 2)
+  stockActual           Decimal                @default(0) @db.Decimal(12, 3)
+  stockMinimo           Decimal                @db.Decimal(12, 3)
   categoriaId           Int
   categoria             Categoria              @relation(fields: [categoriaId], references: [id])
   detallesOrden         DetalleOrden[]
@@ -71,7 +71,7 @@ model OrdenCompra {
   proveedorId   Int
   fechaEmision  DateTime
   estado        EstadoOrdenCompra
-  total         Float
+  total         Decimal          @db.Decimal(12, 2)
   proveedor     Proveedor        @relation(fields: [proveedorId], references: [id])
   detalles      DetalleOrden[]
   createdAt     DateTime         @default(now())
@@ -84,8 +84,8 @@ model DetalleOrden {
   id             Int         @id @default(autoincrement())
   ordenCompraId  Int
   insumoId       Int
-  cantidad       Float
-  precioUnitario Float
+  cantidad       Decimal     @db.Decimal(12, 3)
+  precioUnitario Decimal     @db.Decimal(12, 2)
   ordenCompra    OrdenCompra @relation(fields: [ordenCompraId], references: [id])
   insumo         Insumo      @relation(fields: [insumoId], references: [id])
   createdAt      DateTime    @default(now())
@@ -111,7 +111,7 @@ model RecetaIngrediente {
   id                 Int      @id @default(autoincrement())
   recetaId           Int
   insumoId           Int
-  cantidadRequerida  Float
+  cantidadRequerida  Decimal  @db.Decimal(12, 3)
   receta             Receta   @relation(fields: [recetaId], references: [id])
   insumo             Insumo   @relation(fields: [insumoId], references: [id])
   createdAt          DateTime @default(now())
@@ -125,7 +125,7 @@ model MovimientoInventario {
   id         Int            @id @default(autoincrement())
   insumoId   Int
   tipo       TipoMovimiento
-  cantidad   Float
+  cantidad   Decimal        @db.Decimal(12, 3)
   fecha      DateTime       @default(now())
   motivo     String
   insumo     Insumo         @relation(fields: [insumoId], references: [id])

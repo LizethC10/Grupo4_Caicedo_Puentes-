@@ -7,11 +7,11 @@ export class CreateDetalleOrdenDto {
   @IsInt()
   insumoId: number;
 
-  @IsNumber()
+  @IsNumber({ maxDecimalPlaces: 3 })
   @IsPositive()
   cantidad: number;
 
-  @IsNumber()
+  @IsNumber({ maxDecimalPlaces: 2 })
   @IsPositive()
   precioUnitario: number;
 }

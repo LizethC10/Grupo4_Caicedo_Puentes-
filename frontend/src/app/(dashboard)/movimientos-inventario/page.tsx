@@ -2,13 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { movimientosInventarioService, insumosService } from '@/services';
 import type { MovimientoInventario } from '@/interfaces/movimiento-inventario.interface';
 import type { Insumo } from '@/interfaces/insumo.interface';
 
 export default function MovimientosInventarioPage() {
-  const router = useRouter();
   const [movimientos, setMovimientos] = useState<MovimientoInventario[]>([]);
   const [insumos, setInsumos] = useState<Insumo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -29,16 +27,6 @@ export default function MovimientosInventarioPage() {
     }).catch(() => setError('Error al cargar los movimientos'))
       .finally(() => setLoading(false));
   }, []);
-
-  const handleDelete = async (id: number) => {
-    if (!confirm('¿Eliminar este movimiento?')) return;
-    try {
-      await movimientosInventarioService.remove(id);
-      setMovimientos(movimientos.filter(m => m.id !== id));
-    } catch {
-      alert('Error al eliminar el movimiento.');
-    }
-  };
 
   const getNombreInsumo = (id: number) =>
     insumos.find(i => i.id === id)?.nombre || `Insumo #${id}`;
@@ -184,9 +172,6 @@ export default function MovimientosInventarioPage() {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Fecha
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Acciones
-                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -237,22 +222,6 @@ export default function MovimientosInventarioPage() {
                           minute: '2-digit',
                         })}
                       </p>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center justify-center gap-2">
-                        <button
-                          onClick={() => router.push(`/movimientos-inventario/${movimiento.id}`)}
-                          className="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors"
-                        >
-                          ✏️ Editar
-                        </button>
-                        <button
-                          onClick={() => handleDelete(movimiento.id)}
-                          className="bg-red-50 text-red-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-red-100 transition-colors"
-                        >
-                          🗑️
-                        </button>
-                      </div>
                     </td>
                   </tr>
                 ))}

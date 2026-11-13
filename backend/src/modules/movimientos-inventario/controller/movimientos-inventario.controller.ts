@@ -1,7 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { MovimientosInventarioService } from '../service/movimiento-inventario.service';
 import { CreateMovimientosInventarioDto } from '../dto/create-movimientos-inventario.dto';
-import { UpdateMovimientosInventarioDto } from '../dto/update-movimientos-inventario.dto';
 import { Roles } from '../../auth/decorators/roles.decorator';
 import { Rol } from '@prisma/client';
 
@@ -15,25 +14,13 @@ export class MovimientosInventarioController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.service.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.service.findOne(id);
   }
 
   @Post()
   @Roles(Rol.ADMINISTRADOR)
   create(@Body() dto: CreateMovimientosInventarioDto) {
     return this.service.create(dto);
-  }
-
-  @Put(':id')
-  @Roles(Rol.ADMINISTRADOR)
-  update(@Param('id') id: string, @Body() dto: UpdateMovimientosInventarioDto) {
-    return this.service.update(+id, dto);
-  }
-
-  @Delete(':id')
-  @Roles(Rol.ADMINISTRADOR)
-  remove(@Param('id') id: string) {
-    return this.service.remove(+id);
   }
 }

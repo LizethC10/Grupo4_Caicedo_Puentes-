@@ -1,0 +1,139 @@
+name: CI/CD
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: inventario
+          POSTGRES_PASSWORD: inventario_test_password
+          POSTGRES_DB: inventario_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U inventario -d inventario_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://inventario:inventario_test_password@localhost:5432/inventario_test
+      JWT_SECRET: ci-only-secret-with-at-least-32-characters
+      JWT_EXPIRES_IN: 8h
+      CORS_ORIGIN: http://localhost:3000
+      APP_VERSION: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+      - name: Instalar herramientas de lint y pruebas del backend
+        working-directory: backend
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false jest@29.7.0 ts-jest@29.2.5 @types/jest@29.5.14 eslint@8.57.1 @typescript-eslint/parser@8 @typescript-eslint/eslint-plugin@8 supertest@7.0.0 @types/supertest@6.0.2
+      - name: Migrar base de datos de integración
+        working-directory: backend
+        run: npx prisma migrate deploy
+      - name: Lint, pruebas y build del backend
+        working-directory: backend
+        run: npm run lint && npm test && npm run build
+      - name: Instalar herramientas de lint del frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false eslint@8.57.1 eslint-config-next@15.5.14
+      - name: Lint y build del frontend
+        working-directory: frontend
+        run: npm run lint && npm run build
+
+  imagenes:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: pruebas
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Definir nombres de imagen en minúsculas
+        id: image
+        run: echo "base=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
+      - name: Iniciar sesión en GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Construir backend
+        run: docker build --build-arg APP_VERSION=${GITHUB_SHA} -t ${{ steps.image.outputs.base }}-backend:${GITHUB_SHA} ./backend
+      - name: Escanear backend con Trivy
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ${{ steps.image.outputs.base }}-backend:${{ github.sha }}
+          severity: CRITICAL
+          exit-code: '1'
+          format: table
+      - name: Publicar backend
+        run: docker push ${{ steps.image.outputs.base }}-backend:${GITHUB_SHA}
+      - name: Construir frontend
+        run: docker build --build-arg APP_VERSION=${GITHUB_SHA} -t ${{ steps.image.outputs.base }}-frontend:${GITHUB_SHA} ./frontend
+      - name: Escanear frontend con Trivy
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ${{ steps.image.outputs.base }}-frontend:${{ github.sha }}
+          severity: CRITICAL
+          exit-code: '1'
+          format: table
+      - name: Publicar frontend
+        run: docker push ${{ steps.image.outputs.base }}-frontend:${GITHUB_SHA}
+
+  desplegar:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: imagenes
+    runs-on: ubuntu-latest
+    environment: produccion
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar SSH
+        env:
+          EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$EC2_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/id_ed25519 "ec2-user@$EC2_HOST" "mkdir -p /opt/sistema-inventario/deploy"
+          scp -i ~/.ssh/id_ed25519 compose.prod.yml "ec2-user@$EC2_HOST:/opt/sistema-inventario/compose.prod.yml"
+          scp -i ~/.ssh/id_ed25519 deploy/nginx.conf "ec2-user@$EC2_HOST:/opt/sistema-inventario/deploy/nginx.conf"
+      - name: Actualizar servicios y verificar versión desplegada
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          TAG: ${{ github.sha }}
+          IMAGEN: ghcr.io/${{ github.repository }}
+        run: |
+          IMAGEN=$(printf '%s' "$IMAGEN" | tr '[:upper:]' '[:lower:]')
+          ssh -i ~/.ssh/id_ed25519 "ec2-user@$EC2_HOST" "cd /opt/sistema-inventario && IMAGEN='$IMAGEN' TAG='$TAG' docker compose -f compose.prod.yml pull && IMAGEN='$IMAGEN' TAG='$TAG' docker compose -f compose.prod.yml up -d --remove-orphans"
+          for attempt in $(seq 1 30); do
+            response=$(ssh -i ~/.ssh/id_ed25519 "ec2-user@$EC2_HOST" "curl -fsS http://localhost/api/v1/health" || true)
+            version=$(printf '%s' "$response" | jq -r '.data.version // empty')
+            if [ "$version" = "$TAG" ]; then echo "Versión desplegada: $version"; exit 0; fi
+            sleep 5
+          done
+          echo "La API no confirmó la versión $TAG" >&2
+          exit 1

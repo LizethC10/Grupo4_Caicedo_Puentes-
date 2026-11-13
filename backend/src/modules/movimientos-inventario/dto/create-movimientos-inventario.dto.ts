@@ -12,7 +12,7 @@ export class CreateMovimientosInventarioDto {
   @IsEnum(TipoMovimientoDto)
   tipo: TipoMovimientoDto;
 
-  @IsNumber()
+  @IsNumber({ maxDecimalPlaces: 3 })
   @IsPositive()
   cantidad: number;
 

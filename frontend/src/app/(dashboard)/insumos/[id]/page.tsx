@@ -60,7 +60,6 @@ export default function EditarInsumoPage() {
         nombre: form.nombre,
         unidadMedida: form.unidadMedida,
         precioActual: Number(form.precioActual),
-        stockActual: Number(form.stockActual),
         stockMinimo: Number(form.stockMinimo),
         categoriaId: Number(form.categoriaId),
       });
@@ -146,9 +145,10 @@ export default function EditarInsumoPage() {
               type="number"
               min="0"
               value={form.stockActual}
-              onChange={e => setForm({ ...form, stockActual: e.target.value })}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+              readOnly
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm bg-gray-100"
             />
+            <p className="text-xs text-gray-500 mt-1">Ajusta existencias desde Movimientos de inventario.</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -157,6 +157,7 @@ export default function EditarInsumoPage() {
             <input
               type="number"
               min="0"
+              step="0.001"
               value={form.stockMinimo}
               onChange={e => setForm({ ...form, stockMinimo: e.target.value })}
               className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
