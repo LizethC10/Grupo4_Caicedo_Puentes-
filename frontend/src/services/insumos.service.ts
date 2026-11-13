@@ -1,7 +1,7 @@
 import { apiGet, apiPost, apiPut, apiDelete } from '@/lib/api';
 import type { Insumo } from '@/interfaces/insumo.interface';
 
-export type CreateInsumoDto = Omit<Insumo, 'id' | 'createdAt' | 'updatedAt'>;
+export type CreateInsumoDto = Omit<Insumo, 'id' | 'createdAt' | 'updatedAt' | 'stockActual'>;
 export type UpdateInsumoDto = Partial<CreateInsumoDto>;
 
 export const insumosService = {

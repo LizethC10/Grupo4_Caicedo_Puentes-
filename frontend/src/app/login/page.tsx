@@ -72,7 +72,7 @@ export default function LoginPage() {
                   value={form.email}
                   onChange={e => setForm({ ...form, email: e.target.value })}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                  placeholder="admin@restaurante.com"
+                  placeholder="correo@restaurante.com"
                 />
               </div>
             </div>
@@ -122,15 +122,6 @@ export default function LoginPage() {
               )}
             </button>
           </form>
-
-          {/* Usuario de prueba */}
-          <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
-            <p className="text-xs font-medium text-blue-900 mb-2">👤 Usuario de prueba:</p>
-            <div className="text-xs text-blue-700 space-y-1">
-              <p>📧 <span className="font-mono">admin@restaurante.com</span></p>
-              <p>🔑 <span className="font-mono">admin123</span></p>
-            </div>
-          </div>
 
         </div>
 

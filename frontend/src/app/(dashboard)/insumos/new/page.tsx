@@ -13,7 +13,6 @@ export default function NuevoInsumoPage() {
     categoriaId: '',
     unidadMedida: '',
     precioActual: '',
-    stockActual: '',
     stockMinimo: '',
   });
   const [loading, setLoading] = useState(false);
@@ -37,7 +36,6 @@ export default function NuevoInsumoPage() {
         categoriaId: Number(form.categoriaId),
         unidadMedida: form.unidadMedida,
         precioActual: Number(form.precioActual) || 0,
-        stockActual: Number(form.stockActual) || 0,
         stockMinimo: Number(form.stockMinimo) || 0,
       });
       router.push('/insumos');
@@ -130,22 +128,6 @@ export default function NuevoInsumoPage() {
             />
           </div>
 
-          {/* Stock Actual */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Stock Actual
-            </label>
-            <input
-              type="number"
-              min="0"
-              step="0.01"
-              value={form.stockActual}
-              onChange={e => setForm({ ...form, stockActual: e.target.value })}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
-              placeholder="0"
-            />
-          </div>
-
           {/* Stock Mínimo */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -154,7 +136,7 @@ export default function NuevoInsumoPage() {
             <input
               type="number"
               min="0"
-              step="0.01"
+              step="0.001"
               value={form.stockMinimo}
               onChange={e => setForm({ ...form, stockMinimo: e.target.value })}
               className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"

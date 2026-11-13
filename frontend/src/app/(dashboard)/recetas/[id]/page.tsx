@@ -186,7 +186,7 @@ export default function DetalleRecetaPage() {
           <input
             type="number"
             min="0.01"
-            step="0.01"
+            step="0.001"
             placeholder="Cantidad"
             value={nuevoIngrediente.cantidadRequerida}
             onChange={e => setNuevoIngrediente({ ...nuevoIngrediente, cantidadRequerida: e.target.value })}
