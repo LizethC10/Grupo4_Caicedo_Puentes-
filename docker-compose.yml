@@ -1,20 +1,15 @@
 services:
   db:
     image: postgres:16-alpine
-    container_name: inventario_restaurante_db
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-    ports:
-      - '5432:5432'
+      POSTGRES_USER: ${DB_USER:?falta DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?falta DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME:?falta DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U ${DB_USER} -d ${DB_NAME}']
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -22,16 +17,20 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
-    container_name: inventario_restaurante_backend
+      args:
+        APP_VERSION: ${APP_VERSION:-development}
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
-      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
+      DATABASE_URL: postgresql://${DB_USER:?falta DB_USER}:${DB_PASSWORD:?falta DB_PASSWORD}@db:5432/${DB_NAME:?falta DB_NAME}
+      JWT_SECRET: ${JWT_SECRET:?falta JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-8h}
+      CORS_ORIGIN: ${CORS_ORIGIN:?falta CORS_ORIGIN}
+      APP_VERSION: ${APP_VERSION:-development}
       PORT: 3001
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:?falta SEED_ADMIN_EMAIL}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:?falta SEED_ADMIN_PASSWORD}
     ports:
-      - '3001:3001'
+      - "127.0.0.1:3001:3001"
     depends_on:
       db:
         condition: service_healthy
@@ -39,19 +38,25 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
-    container_name: inventario_restaurante_frontend
+      args:
+        APP_VERSION: ${APP_VERSION:-development}
     restart: unless-stopped
     environment:
-      NEXT_PUBLIC_API_URL: "http://backend:3001"  # ← CAMBIADO AQUÍ
-    ports:
-      - '3005:3000'
+      PORT: 3000
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+
+  proxy:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
     volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - frontend
+      - backend
 
 volumes:
   postgres_data:
