@@ -3,12 +3,14 @@ import { OrdenesCompraRepository } from '../repository/ordenes-compra.repository
 import { CreateOrdenesCompraDto } from '../dto/create-ordenes-compra.dto';
 import { UpdateOrdenesCompraDto } from '../dto/update-ordenes-compra.dto';
 import { PrismaService } from '../../../prisma/prisma.service';
+import { StockService } from '../../stock/stock.service';
 
 @Injectable()
 export class OrdenesCompraService {
   constructor(
     private readonly repository: OrdenesCompraRepository,
     private readonly prisma: PrismaService,
+    private readonly stock: StockService,
   ) {}
 
   findAll() {
@@ -34,32 +36,24 @@ export class OrdenesCompraService {
         throw new BadRequestException('La orden no tiene detalles para recibir');
       }
 
-      // Actualizar stock y registrar movimientos en una transacción
       await this.prisma.$transaction(async (tx) => {
-        for (const detalle of orden.detalles) {
-          // Actualizar stock del insumo
-          await tx.insumo.update({
-            where: { id: detalle.insumoId },
-            data: { stockActual: { increment: detalle.cantidad } },
-          });
-
-          // Registrar movimiento de inventario
-          await tx.movimientoInventario.create({
-            data: {
-              insumoId: detalle.insumoId,
-              tipo: 'ENTRADA',
-              cantidad: detalle.cantidad,
-              fecha: new Date(),
-              motivo: `Recepción orden de compra #${id}`,
-            },
-          });
-        }
-
-        // Actualizar estado de la orden
-        await tx.ordenCompra.update({
-          where: { id },
+        const claimed = await tx.ordenCompra.updateMany({
+          where: { id, estado: 'PENDIENTE' },
           data: { estado: 'RECIBIDA' },
         });
+        if (claimed.count === 0) {
+          const current = await tx.ordenCompra.findUnique({ where: { id }, select: { estado: true } });
+          if (current?.estado === 'RECIBIDA') return;
+          throw new BadRequestException('Solo se pueden recibir órdenes pendientes');
+        }
+        for (const detalle of orden.detalles) {
+          await this.stock.aplicarMovimiento(tx, {
+            insumoId: detalle.insumoId,
+            tipo: 'ENTRADA',
+            cantidad: Number(detalle.cantidad),
+            motivo: `Recepción orden de compra #${id}`,
+          });
+        }
       });
 
       return this.findOne(id);

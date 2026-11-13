@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, ParseIntPipe } from '@nestjs/common';
 import { OrdenesCompraService } from '../service/ordenes-compra.service';
 import { CreateOrdenesCompraDto } from '../dto/create-ordenes-compra.dto';
 import { UpdateOrdenesCompraDto } from '../dto/update-ordenes-compra.dto';
@@ -15,8 +15,8 @@ export class OrdenesCompraController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.service.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.service.findOne(id);
   }
 
   @Post()
@@ -27,13 +27,13 @@ export class OrdenesCompraController {
 
   @Put(':id')
   @Roles(Rol.ADMINISTRADOR)
-  update(@Param('id') id: string, @Body() dto: UpdateOrdenesCompraDto) {
-    return this.service.update(+id, dto);
+  update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateOrdenesCompraDto) {
+    return this.service.update(id, dto);
   }
 
   @Delete(':id')
   @Roles(Rol.ADMINISTRADOR)
-  remove(@Param('id') id: string) {
-    return this.service.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.service.remove(id);
   }
 }
